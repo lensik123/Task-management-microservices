@@ -9,7 +9,8 @@ import org.springframework.web.server.ServerWebExchange;
 import ru.baysarov.task_manager_gateway.dto.UserDto;
 
 @Component
-public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
+public class AuthenticationFilter extends
+    AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
   private final WebClient.Builder webClientBuilder;
   private final RouteValidator routeValidator;
@@ -28,15 +29,14 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
       // Проверка на открытые маршруты, которые не требуют авторизации
       if (routeValidator.isSecured.test(serverWebExchange.getRequest())) {
 
-        // Проверка наличия Authorization заголовка
         if (!serverWebExchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
           throw new RuntimeException("Missing authorization information");
         }
 
-        String authHeader = serverWebExchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+        String authHeader = serverWebExchange.getRequest().getHeaders()
+            .get(HttpHeaders.AUTHORIZATION).get(0);
         String[] parts = authHeader.split(" ");
 
-        // Проверка структуры заголовка авторизации
         if (parts.length != 2 || !"Bearer".equals(parts[0])) {
           throw new RuntimeException("Incorrect authorization structure");
         }
@@ -61,6 +61,6 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
   }
 
   public static class Config {
-    // пустой класс, так как в данном случае не нужны дополнительные конфигурации
+
   }
 }

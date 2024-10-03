@@ -2,7 +2,6 @@ package ru.baysarov.task.service.controller;
 
 
 import jakarta.validation.Valid;
-import java.nio.file.AccessDeniedException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,10 +87,11 @@ public class TasksController {
   @PatchMapping("/{id}/deadline")
   public ResponseEntity<?> setTaskDeadline(@PathVariable int id,
       @RequestBody @Valid SetDeadlineRequest request,
-      @RequestHeader("X-auth-user-id") int userId) throws AccessDeniedException {
+      @RequestHeader("X-auth-user-id") int userId) {
 
     taskService.setTaskDeadline(id, request.getDeadline(), userId);
     return ResponseEntity.ok(HttpStatus.OK);
+
   }
 
 

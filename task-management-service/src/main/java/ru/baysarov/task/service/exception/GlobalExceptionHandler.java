@@ -1,5 +1,6 @@
 package ru.baysarov.task.service.exception;
 
+import java.nio.file.AccessDeniedException;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,16 +16,24 @@ public class GlobalExceptionHandler {
 
   private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
+
+  @ExceptionHandler(AccessDeniedException.class)
+  public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
+    return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access Denied: " + ex.getMessage());
+  }
+
+
   @ExceptionHandler(InvalidEnumValueException.class)
   public ResponseEntity<?> handleInvalidEnumValueException(InvalidEnumValueException ex) {
     logger.error("InvalidEnumValueException occurred: ", ex);
     Map<String, Object> errorDetails = Map.of(
         "field", "taskPriority",
         "invalidValue", ex.getInvalidValue(),
-        "allowedValues", new String[] {"HIGH", "MEDIUM", "LOW"}
+        "allowedValues", new String[]{"HIGH", "MEDIUM", "LOW"}
     );
 
-    ErrorResponse errorResponse = new ErrorResponse("InvalidEnumValue", "Invalid value for task priority", errorDetails);
+    ErrorResponse errorResponse = new ErrorResponse("InvalidEnumValue",
+        "Invalid value for task priority", errorDetails);
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)
         .body(errorResponse);

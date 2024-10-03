@@ -1,8 +1,6 @@
 package ru.baysarov.task.service.service;
 
 
-import feign.FeignException;
-import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,10 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.baysarov.task.service.dto.TaskDto;
 import ru.baysarov.task.service.dto.UserDto;
 import ru.baysarov.task.service.enums.TaskStatus;
+import ru.baysarov.task.service.exception.TaskAccessException;
 import ru.baysarov.task.service.exception.TaskNotFoundException;
+import ru.baysarov.task.service.exception.UserNotFoundException;
 import ru.baysarov.task.service.feign.UserClient;
 import ru.baysarov.task.service.model.Task;
-import ru.baysarov.task.service.model.User;
 import ru.baysarov.task.service.repository.TaskRepository;
 
 
@@ -73,7 +72,8 @@ public class TaskServiceImpl implements TaskService {
   public void assignTask(int taskId, int authorId) {
     Task task = taskRepository.findById(taskId)
         .orElseThrow(() -> new TaskNotFoundException(taskId));
-    User user = getUserById(authorId);
+    UserDto user = userClient.getUserById(authorId)
+        .orElseThrow(() -> new UserNotFoundException(authorId));
     task.setAssigneeId(user.getId());
     taskRepository.save(task);
   }
@@ -89,17 +89,17 @@ public class TaskServiceImpl implements TaskService {
   //TODO: почему при изменении роли у юзера в бд -
   @Override
   @Transactional
-  public TaskDto setTaskDeadline(int taskId, LocalDateTime deadLine, int userId)
-      throws AccessDeniedException {
+  public TaskDto setTaskDeadline(int taskId, LocalDateTime deadLine, int userId) {
     Task task = taskRepository.findById(taskId)
         .orElseThrow(() -> new TaskNotFoundException(taskId));
 
-    UserDto user = userClient.getUserById(userId).getBody();
+    UserDto user = userClient.getUserById(userId)
+        .orElseThrow(() -> new UserNotFoundException(userId));
     List<String> userRoles = userClient.getUserRoles(userId);
 
-    if (!task.getAuthorId().equals(user.getId()) && !userRoles.contains("USER")
+    if (!task.getAuthorId().equals(user.getId()) && !userRoles.contains("ADMIN")
         && !userRoles.contains("TEAM_MODERATOR")) {
-      throw new AccessDeniedException(
+      throw new TaskAccessException(
           "You do not have permission to set the due date for this task.");
     }
 
@@ -109,13 +109,4 @@ public class TaskServiceImpl implements TaskService {
   }
 
 
-  public User getUserById(int id) {
-    try {
-      UserDto userDto = userClient.getUserById(id).getBody();
-      return modelMapper.map(userDto, User.class);
-    } catch (FeignException e) {
-      System.out.println(e.getMessage());
-      return null;
-    }
-  }
 }
