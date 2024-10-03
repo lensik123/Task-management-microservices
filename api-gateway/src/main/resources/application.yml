@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: lb://AUTH
+          predicates:
+            - Path=/auth/**
+
+
+        - id: task-management
+          uri: lb://TASK-MANAGEMENT
+          predicates:
+            - Path=/api/v1/tasks/**
+          filters:
+            - AuthenticationFilter
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 9091
+
+

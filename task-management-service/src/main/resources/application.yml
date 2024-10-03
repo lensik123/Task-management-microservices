@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: TASK-MANAGEMENT
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_service
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    profiles:
+      active: default
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+    registry-fetch-interval-seconds: 60
+    initial-instance-info-replication-interval-seconds: 60
+    fetch-registry: true
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+
+server:
+  port: 9093
