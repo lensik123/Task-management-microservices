@@ -2,6 +2,8 @@ package ru.baysarov.controller;
 
 
 import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +22,28 @@ public class UserController {
     this.userService = userService;
   }
 
-  @GetMapping("/{id}")
-  public UserDto getUser(@PathVariable int id) {
-    return userService.findById(id);
+//  @GetMapping("/{id}")
+//  public ResponseEntity<?> getUser(@PathVariable int id) {
+//    try {
+//      UserDto user = userService.findById(id);
+//      return new ResponseEntity<>(user, HttpStatus.OK);
+//    } catch (RuntimeException e) {
+//      return ResponseEntity.notFound().build();
+//    }
+//  }
+
+  @GetMapping("/{email}")
+  public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+    try {
+      UserDto user = userService.findByEmail(email);
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } catch (RuntimeException e) {
+      return ResponseEntity.notFound().build();
+    }
   }
 
-  @GetMapping("/{id}/roles")
-  public List<String> getUserRoles(@PathVariable int id) {
-    return userService.getUserRoles(id);
+  @GetMapping("/{email}/roles")
+  public List<String> getUserRoles(@PathVariable String email) {
+    return userService.getUserRoles(email);
   }
 }

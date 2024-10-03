@@ -1,15 +1,14 @@
 package ru.baysarov.task.service.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class AssignTaskRequest {
-  private Integer assigneeId;
+  private String assigneeEmail;
 
-  // Геттеры и сеттеры
-  public Integer getAssigneeId() {
-    return assigneeId;
-  }
 
-  public void setAssigneeId(Integer assigneeId) {
-    this.assigneeId = assigneeId;
-  }
+
 }
 

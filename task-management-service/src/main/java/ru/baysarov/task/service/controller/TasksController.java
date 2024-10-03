@@ -47,22 +47,20 @@ public class TasksController {
   }
 
   @PostMapping()
-  public ResponseEntity<?> createTask(@RequestBody @Valid TaskDto taskDto,
-      BindingResult bindingResult,
-      @RequestHeader("X-auth-user-id") int authorId
-  ) {
+  public ResponseEntity<?> createTask(@RequestBody @Valid TaskDto taskDto, BindingResult bindingResult,
+      @RequestHeader("X-auth-user-email") String email) {
     ResponseEntity<?> errors = getResponseEntity(bindingResult);
     if (errors != null) {
       return errors;
     }
-    taskService.createTask(taskDto, authorId);
+    taskService.createTask(taskDto, email);
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
   @PatchMapping("/{id}/assignee")
   public ResponseEntity<?> assignTask(@PathVariable int id,
       @RequestBody AssignTaskRequest request) {
-    taskService.assignTask(id, request.getAssigneeId());
+    taskService.assignTask(id, request.getAssigneeEmail());
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
@@ -83,13 +81,12 @@ public class TasksController {
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
-  //TODO: accessDeniedException изменить
   @PatchMapping("/{id}/deadline")
   public ResponseEntity<?> setTaskDeadline(@PathVariable int id,
       @RequestBody @Valid SetDeadlineRequest request,
-      @RequestHeader("X-auth-user-id") int userId) {
+      @RequestHeader("X-auth-user-email") String userEmail) {
 
-    taskService.setTaskDeadline(id, request.getDeadline(), userId);
+    taskService.setTaskDeadline(id, request.getDeadline(), userEmail);
     return ResponseEntity.ok(HttpStatus.OK);
 
   }

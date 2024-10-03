@@ -52,9 +52,17 @@ public class UserService implements UserDetailsService {
     return userDto;
   }
 
+  public UserDto findByEmail(String email) {
+    UserCredential user = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+    UserDto userDto = new UserDto();
+    userDto.setEmail(user.getEmail());
+    userDto.setId(user.getId());
+    return userDto;
+  }
 
-  public List<String> getUserRoles(int id) {
-    UserCredential user = userRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
+
+  public List<String> getUserRoles(String email) {
+    UserCredential user = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
     List<String> roles = new ArrayList<>();
     roles.add(user.getRole().toString());
     return roles;

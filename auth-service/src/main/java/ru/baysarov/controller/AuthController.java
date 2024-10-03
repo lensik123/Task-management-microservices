@@ -45,6 +45,7 @@ public class AuthController {
     return authService.authenticateAndReturnToken(authRequest);
   }
 
+  //TODO: должна возвращаться понятная ошибка в api-gateway
   @GetMapping("/validateToken")
   public ResponseEntity<UserDto> validateToken(@RequestParam String token) {
     log.info("Trying to validate token {}", token);

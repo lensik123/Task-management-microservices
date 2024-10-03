@@ -7,12 +7,12 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 import ru.baysarov.task.service.dto.TaskDto;
 import ru.baysarov.task.service.dto.UserDto;
 import ru.baysarov.task.service.enums.TaskStatus;
 import ru.baysarov.task.service.exception.TaskAccessException;
 import ru.baysarov.task.service.exception.TaskNotFoundException;
-import ru.baysarov.task.service.exception.UserNotFoundException;
 import ru.baysarov.task.service.feign.UserClient;
 import ru.baysarov.task.service.model.Task;
 import ru.baysarov.task.service.repository.TaskRepository;
@@ -36,12 +36,24 @@ public class TaskServiceImpl implements TaskService {
   }
 
 
+  //TODO: добавить исполнителя
   @Override
   @Transactional
-  public void createTask(TaskDto taskDto, int authorId) {
+  public void createTask(TaskDto taskDto, String userEmail) {
     Task task = modelMapper.map(taskDto, Task.class);
-    task.setAuthorId(authorId);
-    task.setStatus(TaskStatus.WAITING);
+
+    if (!taskDto.getAssigneeEmail().isBlank()) {
+      try {
+        UserDto user = userClient.getUserByEmail(userEmail).getBody();
+        task.setAuthorId(user.getId());
+      } catch (ResponseStatusException e) {
+        throw e;
+      }
+    }
+
+    if (taskDto.getStatus() == null) {
+      task.setStatus(TaskStatus.WAITING);
+    }
     taskRepository.save(task);
   }
 
@@ -69,13 +81,17 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   @Transactional
-  public void assignTask(int taskId, int authorId) {
+  public void assignTask(int taskId, String userEmail) {
     Task task = taskRepository.findById(taskId)
         .orElseThrow(() -> new TaskNotFoundException(taskId));
-    UserDto user = userClient.getUserById(authorId)
-        .orElseThrow(() -> new UserNotFoundException(authorId));
-    task.setAssigneeId(user.getId());
-    taskRepository.save(task);
+
+    try {
+      UserDto user = userClient.getUserByEmail(userEmail).getBody();
+      task.setAssigneeId(user.getId());
+      taskRepository.save(task);
+    } catch (ResponseStatusException e) {
+      throw e;
+    }
   }
 
   @Override
@@ -89,13 +105,18 @@ public class TaskServiceImpl implements TaskService {
   //TODO: почему при изменении роли у юзера в бд -
   @Override
   @Transactional
-  public TaskDto setTaskDeadline(int taskId, LocalDateTime deadLine, int userId) {
+  public TaskDto setTaskDeadline(int taskId, LocalDateTime deadLine, String userEmail) {
     Task task = taskRepository.findById(taskId)
         .orElseThrow(() -> new TaskNotFoundException(taskId));
 
-    UserDto user = userClient.getUserById(userId)
-        .orElseThrow(() -> new UserNotFoundException(userId));
-    List<String> userRoles = userClient.getUserRoles(userId);
+    UserDto user = null;
+    List<String> userRoles = null;
+    try {
+      user = userClient.getUserByEmail(userEmail).getBody();
+      userRoles = userClient.getUserRoles(userEmail);
+    } catch (ResponseStatusException e) {
+      throw e;
+    }
 
     if (!task.getAuthorId().equals(user.getId()) && !userRoles.contains("ADMIN")
         && !userRoles.contains("TEAM_MODERATOR")) {

@@ -50,7 +50,7 @@ public class AuthenticationFilter extends
               // Добавление ID пользователя в заголовок для последующих сервисов
               serverWebExchange.getRequest()
                   .mutate()
-                  .header("X-auth-user-id", String.valueOf(userDto.getId()));
+                  .header("X-auth-user-email", String.valueOf(userDto.getEmail()));
               return exchange;
             })
             .flatMap(chain::filter);

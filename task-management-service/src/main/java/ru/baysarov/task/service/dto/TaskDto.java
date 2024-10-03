@@ -27,7 +27,7 @@ public class TaskDto {
   private String description;
 
   @NotBlank(message = "Assignee ID is required")  // Валидация для assigneeId
-  private String assigneeId;
+  private String assigneeEmail;
 
   private LocalDate deadline;
 

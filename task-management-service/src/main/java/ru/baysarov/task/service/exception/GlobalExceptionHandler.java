@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 import ru.baysarov.task.service.dto.ErrorResponse;
 
 
@@ -17,11 +18,15 @@ public class GlobalExceptionHandler {
   private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 
+  @ExceptionHandler(ResponseStatusException.class)
+  public ResponseEntity<String> handleFeignException(ResponseStatusException ex) {
+    return ResponseEntity.status(ex.getStatusCode()).body(ex.getReason());
+  }
+
   @ExceptionHandler(AccessDeniedException.class)
   public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException ex) {
     return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access Denied: " + ex.getMessage());
   }
-
 
   @ExceptionHandler(InvalidEnumValueException.class)
   public ResponseEntity<?> handleInvalidEnumValueException(InvalidEnumValueException ex) {
