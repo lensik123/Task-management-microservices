@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.baysarov.task.service.dto.SetDeadlineRequest;
 import ru.baysarov.task.service.dto.TaskDto;
-import ru.baysarov.task.service.model.AssignTaskRequest;
+import ru.baysarov.task.service.dto.AssignTaskRequest;
 import ru.baysarov.task.service.service.TaskService;
 import ru.baysarov.task.service.service.TaskServiceImpl;
 

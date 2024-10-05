@@ -22,15 +22,6 @@ public class UserController {
     this.userService = userService;
   }
 
-//  @GetMapping("/{id}")
-//  public ResponseEntity<?> getUser(@PathVariable int id) {
-//    try {
-//      UserDto user = userService.findById(id);
-//      return new ResponseEntity<>(user, HttpStatus.OK);
-//    } catch (RuntimeException e) {
-//      return ResponseEntity.notFound().build();
-//    }
-//  }
 
   @GetMapping("/{email}")
   public ResponseEntity<?> getUserByEmail(@PathVariable String email) {

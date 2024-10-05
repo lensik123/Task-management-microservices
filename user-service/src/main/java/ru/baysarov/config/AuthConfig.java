@@ -26,7 +26,7 @@ public class AuthConfig {
                 "/auth/register",
                 "/auth/validateToken",
                 "/auth/token",
-                "/user/**" // Паттерн для всех путей, начинающихся с /user/
+                "/user/**"
             ).permitAll()
             .anyRequest().authenticated()
         );

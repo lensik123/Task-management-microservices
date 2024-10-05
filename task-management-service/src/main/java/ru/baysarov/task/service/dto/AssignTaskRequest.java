@@ -1,4 +1,4 @@
-package ru.baysarov.task.service.model;
+package ru.baysarov.task.service.dto;
 
 import lombok.Getter;
 import lombok.Setter;

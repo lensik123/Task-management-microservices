@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+//TODO: проверить нужен ли этот класс вообще.
 @Getter
 @Setter
 @NoArgsConstructor
