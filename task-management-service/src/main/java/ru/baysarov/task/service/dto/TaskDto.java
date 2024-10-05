@@ -26,7 +26,7 @@ public class TaskDto {
   @Column(name = "description")
   private String description;
 
-  @NotBlank(message = "Assignee ID is required")  // Валидация для assigneeId
+  @NotBlank(message = "Assignee ID is required")
   private String assigneeEmail;
 
   private LocalDate deadline;
