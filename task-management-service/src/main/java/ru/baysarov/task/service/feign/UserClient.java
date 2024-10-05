@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.baysarov.task.service.dto.UserDto;
 
-@FeignClient(name = "AUTH")
+@FeignClient(name = "AUTH", configuration = FeignClientInterceptor.class)
 public interface UserClient {
   @GetMapping("/user/{email}")
   ResponseEntity<UserDto> getUserByEmail(@PathVariable String email);

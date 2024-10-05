@@ -9,8 +9,7 @@ import org.springframework.web.server.ServerWebExchange;
 import ru.baysarov.task_manager_gateway.dto.UserDto;
 
 @Component
-public class AuthenticationFilter extends
-    AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
+public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
   private final WebClient.Builder webClientBuilder;
   private final RouteValidator routeValidator;
@@ -33,25 +32,30 @@ public class AuthenticationFilter extends
           throw new RuntimeException("Missing authorization information");
         }
 
-        String authHeader = serverWebExchange.getRequest().getHeaders()
-            .get(HttpHeaders.AUTHORIZATION).get(0);
+        String authHeader = serverWebExchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
         String[] parts = authHeader.split(" ");
 
         if (parts.length != 2 || !"Bearer".equals(parts[0])) {
           throw new RuntimeException("Incorrect authorization structure");
         }
 
+        String token = parts[1];  // Сохраняем токен для передачи дальше
+
         // Валидация токена через Auth-сервис
         return webClientBuilder.build()
             .get()
-            .uri("http://AUTH/auth/validateToken?token=" + parts[1])
-            .retrieve().bodyToMono(UserDto.class)
+            .uri("http://AUTH/auth/validateToken?token=" + token)
+            .retrieve()
+            .bodyToMono(UserDto.class)
             .map(userDto -> {
-              // Добавление ID пользователя в заголовок для последующих сервисов
-              serverWebExchange.getRequest()
-                  .mutate()
-                  .header("X-auth-user-email", String.valueOf(userDto.getEmail()));
-              return exchange;
+              ServerWebExchange mutatedExchange = exchange.mutate()
+                  .request(serverWebExchange.getRequest().mutate()
+                      .header("X-auth-user-email", userDto.getEmail())
+                      .header(HttpHeaders.AUTHORIZATION, authHeader)
+                      .build())
+                  .build();
+
+              return mutatedExchange;
             })
             .flatMap(chain::filter);
       }
@@ -61,6 +65,8 @@ public class AuthenticationFilter extends
   }
 
   public static class Config {
-
+    // Пустой класс Config, можно добавить параметры фильтра если нужно
   }
 }
+
+

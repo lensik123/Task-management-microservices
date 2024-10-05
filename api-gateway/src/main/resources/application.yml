@@ -23,8 +23,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-    registry-fetch-interval-seconds: 60
-    instance-info-replication-interval-seconds: 60
+    registry-fetch-interval-seconds: 10
+    instance-info-replication-interval-seconds: 10
 
 server:
   port: 9091

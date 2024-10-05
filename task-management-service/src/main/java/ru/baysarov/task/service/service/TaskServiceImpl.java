@@ -115,6 +115,7 @@ public class TaskServiceImpl implements TaskService {
       user = userClient.getUserByEmail(userEmail).getBody();
       userRoles = userClient.getUserRoles(userEmail);
     } catch (ResponseStatusException e) {
+      System.out.println(e.getMessage());
       throw e;
     }
 
