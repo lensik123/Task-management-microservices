@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
-//TODO: продумать как к эндпоинтам защищенным обращаться-
 @Configuration
 @EnableWebSecurity
 public class AuthConfig {

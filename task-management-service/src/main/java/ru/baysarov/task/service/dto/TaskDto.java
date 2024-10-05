@@ -9,15 +9,17 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import ru.baysarov.task.service.enums.TaskPriority;
 import ru.baysarov.task.service.enums.TaskStatus;
 
 
 @Getter
 @Setter
+@ToString
 public class TaskDto {
 
-  @NotBlank(message = "Task name is required")
+  @NotBlank(message = "Title is required")
   @Size(max = 100, message = "Task name cannot exceed 100 characters")
   @Column(name = "task_name")
   private String title;

@@ -5,8 +5,20 @@ import feign.codec.ErrorDecoder;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Декодер ошибок для Feign, который обрабатывает различные коды состояния HTTP
+ * и генерирует соответствующие исключения.
+ */
 public class FeignErrorDecoder implements ErrorDecoder {
 
+  /**
+   * Декодирует ответ от сервиса и возвращает соответствующее исключение на основе
+   * кода состояния HTTP.
+   *
+   * @param methodKey ключ метода Feign, который был вызван
+   * @param response ответ от сервиса
+   * @return исключение, соответствующее коду состояния ответа
+   */
   @Override
   public Exception decode(String methodKey, Response response) {
     HttpStatus status = HttpStatus.valueOf(response.status());

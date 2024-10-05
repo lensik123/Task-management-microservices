@@ -7,12 +7,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.baysarov.task.service.dto.UserDto;
 
-@FeignClient(name = "AUTH", configuration = FeignClientInterceptor.class)
+/**
+ * Клиент для взаимодействия с сервисом аутентификации (AUTH) с использованием Feign.
+ */
+@FeignClient(name = "AUTH")
 public interface UserClient {
+
+  /**
+   * Получает информацию о пользователе по его адресу электронной почты.
+   *
+   * @param email адрес электронной почты пользователя
+   * @return ResponseEntity с данными пользователя в формате UserDto
+   */
   @GetMapping("/user/{email}")
   ResponseEntity<UserDto> getUserByEmail(@PathVariable String email);
 
+  /**
+   * Получает роли пользователя по его адресу электронной почты.
+   *
+   * @param email адрес электронной почты пользователя
+   * @return список ролей пользователя
+   */
   @GetMapping("/user/{email}/roles")
   List<String> getUserRoles(@PathVariable("email") String email);
 }
-

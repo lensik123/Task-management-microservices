@@ -36,6 +36,7 @@ public class UserService implements UserDetailsService {
         user.getPassword(), new ArrayList<>());
   }
 
+
   public void saveUser(UserCredential credential) {
     credential.setPassword(passwordEncoder.encode(credential.getPassword()));
     credential.setRole(Role.USER);
@@ -43,17 +44,9 @@ public class UserService implements UserDetailsService {
   }
 
 
-  public UserDto findById(int id) {
-    UserCredential user = repository.findById(id)
-        .orElseThrow(() -> new RuntimeException("User not found"));
-    UserDto userDto = new UserDto();
-    userDto.setEmail(user.getEmail());
-    userDto.setId(user.getId());
-    return userDto;
-  }
-
   public UserDto findByEmail(String email) {
-    UserCredential user = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+    UserCredential user = repository.findByEmail(email)
+        .orElseThrow(() -> new RuntimeException("User not found"));
     UserDto userDto = new UserDto();
     userDto.setEmail(user.getEmail());
     userDto.setId(user.getId());
@@ -62,7 +55,8 @@ public class UserService implements UserDetailsService {
 
 
   public List<String> getUserRoles(String email) {
-    UserCredential user = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+    UserCredential user = repository.findByEmail(email)
+        .orElseThrow(() -> new RuntimeException("User not found"));
     List<String> roles = new ArrayList<>();
     roles.add(user.getRole().toString());
     return roles;

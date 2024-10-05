@@ -1,6 +1,5 @@
 package ru.baysarov.task.service.service;
 
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,16 +12,17 @@ import ru.baysarov.task.service.dto.UserDto;
 import ru.baysarov.task.service.enums.TaskStatus;
 import ru.baysarov.task.service.exception.TaskAccessException;
 import ru.baysarov.task.service.exception.TaskNotFoundException;
+import ru.baysarov.task.service.exception.UserNotFoundException;
 import ru.baysarov.task.service.feign.UserClient;
 import ru.baysarov.task.service.model.Task;
 import ru.baysarov.task.service.repository.TaskRepository;
 
-
-//TODO: Сделать чтобы методы возвращали объект
+/**
+ * Реализация сервиса для управления задачами.
+ */
 @Service
 @Transactional(readOnly = true)
 public class TaskServiceImpl implements TaskService {
-
 
   private final UserClient userClient;
   private final TaskRepository taskRepository;
@@ -35,20 +35,32 @@ public class TaskServiceImpl implements TaskService {
     this.modelMapper = modelMapper;
   }
 
-
-  //TODO: добавить исполнителя
+  /**
+   * Создает новую задачу.
+   *
+   * @param taskDto объект, содержащий данные о задаче
+   * @param authorEmail адрес электронной почты автора задачи
+   * @throws UserNotFoundException если пользователь с указанным email не найден
+   */
   @Override
   @Transactional
-  public void createTask(TaskDto taskDto, String userEmail) {
+  public void createTask(TaskDto taskDto, String authorEmail) {
     Task task = modelMapper.map(taskDto, Task.class);
 
     if (!taskDto.getAssigneeEmail().isBlank()) {
       try {
-        UserDto user = userClient.getUserByEmail(userEmail).getBody();
-        task.setAuthorId(user.getId());
+        UserDto assignee = userClient.getUserByEmail(taskDto.getAssigneeEmail()).getBody();
+        task.setAssigneeId(assignee.getId());
       } catch (ResponseStatusException e) {
-        throw e;
+        throw new UserNotFoundException("User " + taskDto.getAssigneeEmail() + " not found");
       }
+    }
+
+    try {
+      UserDto author = userClient.getUserByEmail(authorEmail).getBody();
+      task.setAuthorId(author.getId());
+    } catch (ResponseStatusException e) {
+      throw new UserNotFoundException("User " + authorEmail + " not found");
     }
 
     if (taskDto.getStatus() == null) {
@@ -57,6 +69,13 @@ public class TaskServiceImpl implements TaskService {
     taskRepository.save(task);
   }
 
+  /**
+   * Получает задачу по её идентификатору.
+   *
+   * @param id идентификатор задачи
+   * @return объект TaskDto с данными о задаче
+   * @throws TaskNotFoundException если задача с указанным идентификатором не найдена
+   */
   @Override
   public TaskDto getTaskById(int id) {
     Task task = taskRepository.findById(id)
@@ -64,6 +83,11 @@ public class TaskServiceImpl implements TaskService {
     return modelMapper.map(task, TaskDto.class);
   }
 
+  /**
+   * Получает список всех задач.
+   *
+   * @return список объектов TaskDto, представляющих все задачи
+   */
   @Override
   public List<TaskDto> getAllTasks() {
     return taskRepository.findAll().stream()
@@ -71,6 +95,13 @@ public class TaskServiceImpl implements TaskService {
         .collect(Collectors.toList());
   }
 
+  /**
+   * Обновляет данные задачи.
+   *
+   * @param id идентификатор задачи, которую нужно обновить
+   * @param updatedTaskDto объект, содержащий обновленные данные о задаче
+   * @throws TaskNotFoundException если задача с указанным идентификатором не найдена
+   */
   @Override
   @Transactional
   public void updateTask(int id, TaskDto updatedTaskDto) {
@@ -79,6 +110,14 @@ public class TaskServiceImpl implements TaskService {
     taskRepository.save(updatedTask);
   }
 
+  /**
+   * Назначает задачу пользователю.
+   *
+   * @param taskId идентификатор задачи
+   * @param userEmail адрес электронной почты пользователя, которому назначается задача
+   * @throws TaskNotFoundException если задача с указанным идентификатором не найдена
+   * @throws UserNotFoundException если пользователь с указанным email не найден
+   */
   @Override
   @Transactional
   public void assignTask(int taskId, String userEmail) {
@@ -90,10 +129,16 @@ public class TaskServiceImpl implements TaskService {
       task.setAssigneeId(user.getId());
       taskRepository.save(task);
     } catch (ResponseStatusException e) {
-      throw e;
+      throw new UserNotFoundException("User " + userEmail + " not found");
     }
   }
 
+  /**
+   * Удаляет задачу по её идентификатору.
+   *
+   * @param id идентификатор задачи, которую нужно удалить
+   * @throws TaskNotFoundException если задача с указанным идентификатором не найдена
+   */
   @Override
   @Transactional
   public void deleteTask(int id) {
@@ -102,10 +147,19 @@ public class TaskServiceImpl implements TaskService {
     taskRepository.delete(task);
   }
 
-  //TODO: почему при изменении роли у юзера в бд -
+  /**
+   * Устанавливает срок выполнения задачи.
+   *
+   * @param taskId идентификатор задачи
+   * @param deadLine срок выполнения задачи
+   * @param userEmail адрес электронной почты пользователя, устанавливающего срок
+   * @throws TaskNotFoundException если задача с указанным идентификатором не найдена
+   * @throws UserNotFoundException если пользователь с указанным email не найден
+   * @throws TaskAccessException если у пользователя нет разрешения на установку срока выполнения задачи
+   */
   @Override
   @Transactional
-  public TaskDto setTaskDeadline(int taskId, LocalDateTime deadLine, String userEmail) {
+  public void setTaskDeadline(int taskId, LocalDateTime deadLine, String userEmail) {
     Task task = taskRepository.findById(taskId)
         .orElseThrow(() -> new TaskNotFoundException(taskId));
 
@@ -115,8 +169,7 @@ public class TaskServiceImpl implements TaskService {
       user = userClient.getUserByEmail(userEmail).getBody();
       userRoles = userClient.getUserRoles(userEmail);
     } catch (ResponseStatusException e) {
-      System.out.println(e.getMessage());
-      throw e;
+      throw new UserNotFoundException("User " + userEmail + " not found");
     }
 
     if (!task.getAuthorId().equals(user.getId()) && !userRoles.contains("ADMIN")
@@ -126,9 +179,6 @@ public class TaskServiceImpl implements TaskService {
     }
 
     task.setDeadline(deadLine);
-    Task savedTask = taskRepository.save(task);
-    return modelMapper.map(savedTask, TaskDto.class);
+    taskRepository.save(task);
   }
-
-
 }

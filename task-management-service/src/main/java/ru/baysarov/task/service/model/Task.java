@@ -9,20 +9,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.baysarov.task.service.enums.TaskPriority;
 import ru.baysarov.task.service.enums.TaskStatus;
 
+/**
+ * Модель задачи, представляющая задачу в системе.
+ */
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "task")
 public class Task {
 
@@ -50,5 +48,4 @@ public class Task {
   @Enumerated(EnumType.STRING)
   @Column(name = "priority")
   private TaskPriority priority;
-
 }
