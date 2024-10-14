@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.baysarov.dto.UserDto;
 import ru.baysarov.enums.Role;
 import ru.baysarov.model.UserCredential;
@@ -14,6 +15,7 @@ import ru.baysarov.repository.UserRepository;
 
 //TODO: сделать интерфейс для сервиса. Сделать Exception
 @Service
+@Transactional(readOnly = true)
 public class UserService implements UserDetailsService {
 
   private final UserRepository userRepository;
@@ -37,6 +39,7 @@ public class UserService implements UserDetailsService {
   }
 
 
+  @Transactional
   public void saveUser(UserCredential credential) {
     credential.setPassword(passwordEncoder.encode(credential.getPassword()));
     credential.setRole(Role.USER);
@@ -46,6 +49,15 @@ public class UserService implements UserDetailsService {
 
   public UserDto findByEmail(String email) {
     UserCredential user = repository.findByEmail(email)
+        .orElseThrow(() -> new RuntimeException("User not found"));
+    UserDto userDto = new UserDto();
+    userDto.setEmail(user.getEmail());
+    userDto.setId(user.getId());
+    return userDto;
+  }
+
+  public UserDto findById(int id){
+    UserCredential user = repository.findById(id)
         .orElseThrow(() -> new RuntimeException("User not found"));
     UserDto userDto = new UserDto();
     userDto.setEmail(user.getEmail());

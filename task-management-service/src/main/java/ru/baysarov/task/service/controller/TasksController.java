@@ -1,10 +1,9 @@
 package ru.baysarov.task.service.controller;
 
-
 import jakarta.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -18,141 +17,108 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.baysarov.task.service.dto.AllTasksResponse;
 import ru.baysarov.task.service.dto.SetDeadlineRequest;
-import ru.baysarov.task.service.dto.TaskDto;
+import ru.baysarov.task.service.dto.TaskDtoIn;
 import ru.baysarov.task.service.dto.AssignTaskRequest;
+import ru.baysarov.task.service.dto.TaskDtoOut;
 import ru.baysarov.task.service.service.TaskService;
-import ru.baysarov.task.service.service.TaskServiceImpl;
 
 @RestController
 @RequestMapping("api/v1/tasks")
+@Slf4j
 public class TasksController {
 
   private final TaskService taskService;
 
-  public TasksController(TaskServiceImpl taskServiceImpl) {
-    this.taskService = taskServiceImpl;
+  public TasksController(TaskService taskService) {
+    this.taskService = taskService;
   }
 
-  /**
-   * Получает задачу по указанному идентификатору.
-   *
-   * @param id идентификатор задачи
-   * @return объект TaskDto, представляющий запрашиваемую задачу
-   */
   @GetMapping("/{id}")
-  public TaskDto getTask(@PathVariable int id) {
-    return taskService.getTaskById(id);
+  public TaskDtoOut getTask(@PathVariable int id) {
+    log.info("Fetching task with id: {}", id);
+    TaskDtoOut task = taskService.getTaskById(id);
+    log.info("Task with id: {} retrieved successfully", id);
+    return task;
   }
 
-  /**
-   * Получает список всех задач.
-   *
-   * @return список объектов TaskDto, представляющих все задачи
-   */
+
+  //TODO: корректность логов проверить. СДелать stream
+  //TODO: сделать вывод только всех своих тасков
   @GetMapping()
-  public List<TaskDto> getAllTasks() {
-    return taskService.getAllTasks();
+  public AllTasksResponse getAllTasks(
+      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "10") int size,
+      @RequestParam(defaultValue = "false") boolean isMyTasks
+  ) {
+    log.info("Fetching all tasks, page: {}, size: {}, isMyTasks: {}", page, size, isMyTasks);
+    AllTasksResponse response = new AllTasksResponse(taskService.getAllTasks(page, size, isMyTasks));
+    log.info("All tasks retrieved successfully");
+    return response;
   }
 
-  /**
-   * Создает новую задачу.
-   *
-   * @param taskDto объект TaskDto, содержащий данные создаваемой задачи
-   * @param bindingResult объект BindingResult, содержащий результаты валидации
-   * @param email адрес электронной почты пользователя, создающего задачу
-   * @return ResponseEntity с кодом состояния 201 (CREATED) в случае успешного создания
-   *         или объект ResponseEntity с сообщением об ошибках, если валидация не прошла
-   */
   @PostMapping()
-  public ResponseEntity<?> createTask(@RequestBody @Valid TaskDto taskDto, BindingResult bindingResult,
+  public ResponseEntity<?> createTask(@RequestBody @Valid TaskDtoIn taskDtoIn, BindingResult bindingResult,
       @RequestHeader("X-auth-user-email") String email) {
+    log.info("Creating new task by user: {}", email);
     ResponseEntity<?> errors = getResponseEntity(bindingResult);
     if (errors != null) {
+      log.error("Validation errors during task creation: {}", errors.getBody());
       return errors;
     }
-    taskService.createTask(taskDto, email);
+    taskService.createTask(taskDtoIn, email);
+    log.info("Task created successfully by user: {}", email);
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
-  /**
-   * Назначает исполнителя для указанной задачи.
-   *
-   * @param id идентификатор задачи
-   * @param request объект AssignTaskRequest, содержащий данные о назначении исполнителя
-   * @return ResponseEntity с кодом состояния 200 (OK)
-   */
   @PatchMapping("/{id}/assignee")
-  public ResponseEntity<?> assignTask(@PathVariable int id,
-      @RequestBody AssignTaskRequest request) {
+  public ResponseEntity<?> assignTask(@PathVariable int id, @RequestBody AssignTaskRequest request) {
+    log.info("Assigning task with id: {} to user: {}", id, request.getAssigneeEmail());
     taskService.assignTask(id, request.getAssigneeEmail());
+    log.info("Task with id: {} assigned to user: {}", id, request.getAssigneeEmail());
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
-  /**
-   * Обновляет данные указанной задачи.
-   *
-   * @param id идентификатор задачи
-   * @param updatedTask объект TaskDto, содержащий обновленные данные задачи
-   * @param bindingResult объект BindingResult, содержащий результаты валидации
-   * @return ResponseEntity с кодом состояния 200 (OK) в случае успешного обновления
-   *         или объект ResponseEntity с сообщением об ошибках, если валидация не прошла
-   */
   @PutMapping("/{id}")
-  public ResponseEntity<?> updateTask(@PathVariable int id,
-      @RequestBody @Valid TaskDto updatedTask, BindingResult bindingResult) {
+  public ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody @Valid TaskDtoIn updatedTask,
+      BindingResult bindingResult) {
+    log.info("Updating task with id: {}", id);
     ResponseEntity<?> errors = getResponseEntity(bindingResult);
     if (errors != null) {
+      log.error("Validation errors during task update: {}", errors.getBody());
       return errors;
     }
     taskService.updateTask(id, updatedTask);
+    log.info("Task with id: {} updated successfully", id);
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
-  /**
-   * Удаляет задачу по указанному идентификатору.
-   *
-   * @param id идентификатор задачи
-   * @return ResponseEntity с кодом состояния 200 (OK)
-   */
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteTaskById(@PathVariable int id) {
+    log.info("Deleting task with id: {}", id);
     taskService.deleteTask(id);
+    log.info("Task with id: {} deleted successfully", id);
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
-  /**
-   * Устанавливает срок выполнения для указанной задачи.
-   *
-   * @param id идентификатор задачи
-   * @param request объект SetDeadlineRequest, содержащий новую дату выполнения
-   * @param bindingResult объект BindingResult, содержащий результаты валидации
-   * @param userEmail адрес электронной почты пользователя, устанавливающего срок выполнения
-   * @return ResponseEntity с кодом состояния 200 (OK) в случае успешного обновления
-   *         или объект ResponseEntity с сообщением об ошибках, если валидация не прошла
-   */
   @PatchMapping("/{id}/deadline")
-  public ResponseEntity<?> setTaskDeadline(@PathVariable int id,
-      @RequestBody @Valid SetDeadlineRequest request, BindingResult bindingResult,
-      @RequestHeader("X-auth-user-email") String userEmail) {
+  public ResponseEntity<?> setTaskDeadline(@PathVariable int id, @RequestBody @Valid SetDeadlineRequest request,
+      BindingResult bindingResult, @RequestHeader("X-auth-user-email") String userEmail) {
+    log.info("Setting deadline for task with id: {} by user: {}", id, userEmail);
     ResponseEntity<?> errors = getResponseEntity(bindingResult);
     if (errors != null) {
+      log.error("Validation errors during setting deadline: {}", errors.getBody());
       return errors;
     }
     taskService.setTaskDeadline(id, request.getDeadline(), userEmail);
+    log.info("Deadline set for task with id: {} by user: {}", id, userEmail);
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
-  /**
-   * Проверяет наличие ошибок валидации и возвращает соответствующий
-   * объект ResponseEntity с сообщением об ошибках, если таковые имеются.
-   *
-   * @param bindingResult объект BindingResult, содержащий результаты валидации
-   * @return ResponseEntity с кодом состояния 400 (BAD_REQUEST) и телом,
-   *         содержащим поля и сообщения об ошибках, если ошибки присутствуют;
-   *         null, если ошибок нет
-   */
+
   static ResponseEntity<?> getResponseEntity(BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       Map<String, String> errors = new HashMap<>();

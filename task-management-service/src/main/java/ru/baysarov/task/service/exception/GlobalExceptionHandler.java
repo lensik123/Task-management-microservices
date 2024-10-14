@@ -29,6 +29,7 @@ public class GlobalExceptionHandler {
    */
   @ExceptionHandler(ResponseStatusException.class)
   public ResponseEntity<String> handleFeignException(ResponseStatusException ex) {
+    logger.error(ex.getMessage(), ex);
     return ResponseEntity.status(ex.getStatusCode()).body(ex.getReason());
   }
 
@@ -40,6 +41,7 @@ public class GlobalExceptionHandler {
    */
   @ExceptionHandler(UserNotFoundException.class)
   public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException ex) {
+    logger.error(ex.getMessage(), ex);
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
   }
 

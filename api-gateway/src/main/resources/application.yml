@@ -9,7 +9,6 @@ spring:
           predicates:
             - Path=/auth/**
 
-
         - id: task-management
           uri: lb://TASK-MANAGEMENT
           predicates:
@@ -17,6 +16,12 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: statistic
+          uri: lb://STATISTIC
+          predicates:
+            - Path=/api/v1/statistic/**
+          filters:
+            - AuthenticationFilter
 
 
 eureka:
@@ -28,4 +33,13 @@ eureka:
 server:
   port: 9091
 
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/application.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30
 

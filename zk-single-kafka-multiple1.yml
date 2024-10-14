@@ -1,0 +1,70 @@
+version: '2.1'
+
+services:
+  zoo1:
+    image: confluentinc/cp-zookeeper:7.3.2
+    hostname: zoo1
+    container_name: zoo1
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_SERVERS: zoo1:2888:3888
+
+  kafka1:
+    image: confluentinc/cp-kafka:7.3.2
+    hostname: kafka1
+    container_name: kafka1
+    ports:
+      - "9097:9097"
+      - "29097:29097"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka1:19097,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9097,DOCKER://host.docker.internal:29097
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
+      KAFKA_BROKER_ID: 1
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+    volumes:
+      - D:/kafka/data/kafka1:/confluentinc/kafka
+    depends_on:
+      - zoo1
+
+  kafka2:
+    image: confluentinc/cp-kafka:7.3.2
+    hostname: kafka2
+    container_name: kafka2
+    ports:
+      - "9098:9098"
+      - "29098:29098"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka2:19098,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9098,DOCKER://host.docker.internal:29098
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
+      KAFKA_BROKER_ID: 2
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+    volumes:
+      - D:/kafka/data/kafka2:/confluentinc/kafka
+    depends_on:
+      - zoo1
+
+  kafka3:
+    image: confluentinc/cp-kafka:7.3.2
+    hostname: kafka3
+    container_name: kafka3
+    ports:
+      - "9099:9099"
+      - "29099:29099"
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka3:19099,EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:9099,DOCKER://host.docker.internal:29099
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
+      KAFKA_BROKER_ID: 3
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+    volumes:
+      - D:/kafka/data/kafka3:/confluentinc/kafka
+    depends_on:
+      - zoo1

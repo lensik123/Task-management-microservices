@@ -1,3 +1,6 @@
+server:
+  port: 9090
+
 spring:
   application:
     name: AUTH
@@ -23,17 +26,16 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-    registry-fetch-interval-seconds: 60
-    initial-instance-info-replication-interval-seconds: 60
-    fetch-registry: true
-    register-with-eureka: true
-    healthcheck:
-      enabled: true
-
-server:
-  port: 9090
-
 jwt:
   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437u
   expiration-time: 86400 # 24 часа в секундах
 
+logging:
+  level:
+    root: info
+  file:
+    name: logs/application.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30

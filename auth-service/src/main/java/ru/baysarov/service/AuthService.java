@@ -15,10 +15,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.baysarov.dto.AuthRequest;
 import ru.baysarov.dto.UserDto;
+import ru.baysarov.exception.UserNotFoundException;
 import ru.baysarov.repository.UserRepository;
 
+//TODO: ДОбавить логирование
 @Service
-@Transactional
 public class AuthService {
 
   private final AuthenticationManager authenticationManager;
@@ -51,6 +52,7 @@ public class AuthService {
         .compact();
   }
 
+  @Transactional(readOnly = true)
   public UserDto validateToken(String token) {
     String email = Jwts.parserBuilder()
         .setSigningKey(getSigninKey())
@@ -61,7 +63,7 @@ public class AuthService {
 
     return userRepository.findByEmail(email)
         .map(user -> new UserDto(user.getId(), user.getEmail()))
-        .orElseThrow(() -> new RuntimeException("User not found"));
+        .orElseThrow(() -> new UserNotFoundException("User not found"));
   }
 
   public String authenticateAndReturnToken(AuthRequest request) {

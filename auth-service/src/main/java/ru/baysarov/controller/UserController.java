@@ -33,6 +33,17 @@ public class UserController {
     }
   }
 
+  @GetMapping("/id/{id}")
+  public ResponseEntity<?> getUserByEmail(@PathVariable int id) {
+    try {
+      UserDto user = userService.findById(id);
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } catch (RuntimeException e) {
+      return ResponseEntity.notFound().build();
+    }
+  }
+
+
   @GetMapping("/{email}/roles")
   public List<String> getUserRoles(@PathVariable String email) {
     return userService.getUserRoles(email);

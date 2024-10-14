@@ -4,3 +4,16 @@ eureka:
     fetch-registry: false
 server:
   port: 8761
+spring:
+  application:
+    name: eureka-server
+
+logging:
+  level:
+    root: info
+  file:
+    name: logs/application.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30

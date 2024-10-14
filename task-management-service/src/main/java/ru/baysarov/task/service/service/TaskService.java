@@ -1,11 +1,10 @@
 package ru.baysarov.task.service.service;
 
+//TODO: пройтись по всем файлам и сделать форматирование
 import java.time.LocalDateTime;
 import java.util.List;
-import ru.baysarov.task.service.dto.TaskDto;
-import ru.baysarov.task.service.exception.TaskAccessException;
-import ru.baysarov.task.service.exception.TaskNotFoundException;
-import ru.baysarov.task.service.exception.UserNotFoundException;
+import ru.baysarov.task.service.dto.TaskDtoIn;
+import ru.baysarov.task.service.dto.TaskDtoOut;
 
 /**
  * Интерфейс для управления задачами в системе.
@@ -15,10 +14,10 @@ public interface TaskService {
   /**
    * Создает новую задачу.
    *
-   * @param taskDto объект, содержащий данные о задаче
+   * @param taskDtoIn     объект, содержащий данные о задаче
    * @param authorEmail адрес электронной почты автора задачи
    */
-  void createTask(TaskDto taskDto, String authorEmail);
+  void createTask(TaskDtoIn taskDtoIn, String authorEmail);
 
   /**
    * Получает задачу по её идентификатору.
@@ -26,27 +25,29 @@ public interface TaskService {
    * @param id идентификатор задачи
    * @return объект TaskDto с данными о задаче
    */
-  TaskDto getTaskById(int id);
+  TaskDtoOut getTaskById(int id);
+
+
 
   /**
    * Получает список всех задач.
    *
    * @return список объектов TaskDto, представляющих все задачи
    */
-  List<TaskDto> getAllTasks();
+  List<TaskDtoOut> getAllTasks(int page, int size, boolean isMyTasks);
 
   /**
    * Обновляет данные задачи.
    *
-   * @param id идентификатор задачи, которую нужно обновить
+   * @param id          идентификатор задачи, которую нужно обновить
    * @param updatedTask объект, содержащий обновленные данные о задаче
    */
-  void updateTask(int id, TaskDto updatedTask);
+  void updateTask(int id, TaskDtoIn updatedTask);
 
   /**
    * Назначает задачу пользователю.
    *
-   * @param taskId идентификатор задачи
+   * @param taskId    идентификатор задачи
    * @param userEmail адрес электронной почты пользователя, которому назначается задача
    */
   void assignTask(int taskId, String userEmail);

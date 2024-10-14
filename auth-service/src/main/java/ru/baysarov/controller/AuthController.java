@@ -20,6 +20,7 @@ import ru.baysarov.service.UserService;
 
 
 //TODO: добавить ошибки если не смог залогиниться и для других методов. Почему при изменении роли в бд, пользователь не может залогиниться?
+//TODO: javadoc
 @RestController
 @RequestMapping("/auth")
 @Slf4j
@@ -36,7 +37,9 @@ public class AuthController {
 
   @PostMapping("/register")
   public ResponseEntity<?> addNewUser(@RequestBody UserCredential user) {
+    log.info("Trying to add new user");
     userService.saveUser(user);
+    log.info("User has been added");
     return ResponseEntity.ok(HttpStatus.CREATED);
   }
 
@@ -45,6 +48,11 @@ public class AuthController {
     return authService.authenticateAndReturnToken(authRequest);
   }
 
+  /**
+   *
+   * @param token
+   * @return ResponseEntity<UserDto> а
+   */
   //TODO: должна возвращаться понятная ошибка в api-gateway
   @GetMapping("/validateToken")
   public ResponseEntity<UserDto> validateToken(@RequestParam String token) {

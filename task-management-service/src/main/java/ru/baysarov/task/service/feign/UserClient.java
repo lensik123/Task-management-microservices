@@ -22,6 +22,10 @@ public interface UserClient {
   @GetMapping("/user/{email}")
   ResponseEntity<UserDto> getUserByEmail(@PathVariable String email);
 
+  //TODO: добавить тянуть по id
+  @GetMapping("/user/id/{id}")
+  ResponseEntity<UserDto> getUserById(@PathVariable int id);
+
   /**
    * Получает роли пользователя по его адресу электронной почты.
    *

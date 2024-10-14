@@ -2,8 +2,10 @@ package ru.baysarov.task.service.feign;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;
+import org.springframework.expression.AccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
+import ru.baysarov.task.service.exception.UserNotFoundException;
 
 /**
  * Декодер ошибок для Feign, который обрабатывает различные коды состояния HTTP
@@ -16,19 +18,33 @@ public class FeignErrorDecoder implements ErrorDecoder {
    * кода состояния HTTP.
    *
    * @param methodKey ключ метода Feign, который был вызван
-   * @param response ответ от сервиса
+   * @param response  ответ от сервиса
    * @return исключение, соответствующее коду состояния ответа
    */
   @Override
   public Exception decode(String methodKey, Response response) {
     HttpStatus status = HttpStatus.valueOf(response.status());
 
+    // Получаем URL запроса, чтобы вытащить email или ID пользователя
+    String url = response.request().url();
+    String userIdentifier = extractUserIdentifierFromUrl(url); // Вытащим либо email, либо ID
+
     if (status == HttpStatus.NOT_FOUND) {
-      return new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found in auth service");
+      return new UserNotFoundException("User with identifier " + userIdentifier + " not found in auth service");
     } else if (status == HttpStatus.FORBIDDEN) {
-      return new ResponseStatusException(HttpStatus.FORBIDDEN, "Access denied in auth service");
+      return new AccessException("Access denied for user with identifier " + userIdentifier);
     }
 
     return new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error in auth service");
+  }
+
+  /**
+   * Извлекает идентификатор пользователя (email или ID) из URL.
+   *
+   * @param url URL запроса, содержащий идентификатор пользователя
+   * @return строка, представляющая идентификатор пользователя
+   */
+  private String extractUserIdentifierFromUrl(String url) {
+    return url.substring(url.lastIndexOf('/') + 1);
   }
 }
