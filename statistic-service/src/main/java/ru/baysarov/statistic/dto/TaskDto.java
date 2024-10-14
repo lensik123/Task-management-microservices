@@ -29,7 +29,7 @@ public class TaskDto {
 
   private String priority;
   private String status;
-  
+
   private Double timeSpentHours;
 
 }

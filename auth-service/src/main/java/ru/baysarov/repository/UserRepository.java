@@ -6,6 +6,5 @@ import ru.baysarov.model.UserCredential;
 
 public interface UserRepository extends JpaRepository<UserCredential, Integer> {
 
-
   Optional<UserCredential> findByEmail(String email);
 }
