@@ -14,22 +14,34 @@ import org.springframework.kafka.support.mapping.DefaultJackson2JavaTypeMapper;
 import java.util.HashMap;
 import java.util.Map;
 import ru.baysarov.statistic.dto.TaskDto;
+import ru.baysarov.statistic.dto.TimeEntryDto;
 
 @Configuration
 @EnableKafka
 public class KafkaConsumerConfig {
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, TaskDto> kafkaListenerContainerFactory() {
-    ConcurrentKafkaListenerContainerFactory<String, TaskDto> factory =
-        new ConcurrentKafkaListenerContainerFactory<>();
-    factory.setConsumerFactory(consumerFactory());
+  public ConcurrentKafkaListenerContainerFactory<String, TaskDto> taskDtoListenerFactory() {
+    ConcurrentKafkaListenerContainerFactory<String, TaskDto> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    factory.setConsumerFactory(taskDtoConsumerFactory());
     return factory;
   }
 
   @Bean
-  public ConsumerFactory<String, TaskDto> consumerFactory() {
-    return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), jsonDeserializer());
+  public ConcurrentKafkaListenerContainerFactory<String, TimeEntryDto> timeEntryDtoListenerFactory() {
+    ConcurrentKafkaListenerContainerFactory<String, TimeEntryDto> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    factory.setConsumerFactory(timeEntryDtoConsumerFactory());
+    return factory;
+  }
+
+  @Bean
+  public ConsumerFactory<String, TaskDto> taskDtoConsumerFactory() {
+    return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), taskDtoJsonDeserializer());
+  }
+
+  @Bean
+  public ConsumerFactory<String, TimeEntryDto> timeEntryDtoConsumerFactory() {
+    return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), timeEntryDtoJsonDeserializer());
   }
 
   @Bean
@@ -38,19 +50,32 @@ public class KafkaConsumerConfig {
     props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9097,localhost:9098,localhost:9099");
     props.put(ConsumerConfig.GROUP_ID_CONFIG, "task_group");
     props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-    props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
     return props;
   }
 
   @Bean
-  public JsonDeserializer<TaskDto> jsonDeserializer() {
+  public JsonDeserializer<TaskDto> taskDtoJsonDeserializer() {
     DefaultJackson2JavaTypeMapper typeMapper = new DefaultJackson2JavaTypeMapper();
     Map<String, Class<?>> mappings = new HashMap<>();
     mappings.put("ru.baysarov.task.service.dto.TaskDtoOut", TaskDto.class);
-
     typeMapper.setIdClassMapping(mappings);
 
     JsonDeserializer<TaskDto> deserializer = new JsonDeserializer<>(TaskDto.class);
+    deserializer.setTypeMapper(typeMapper);
+    deserializer.setUseTypeMapperForKey(true);
+    deserializer.addTrustedPackages("*");
+
+    return deserializer;
+  }
+
+  @Bean
+  public JsonDeserializer<TimeEntryDto> timeEntryDtoJsonDeserializer() {
+    DefaultJackson2JavaTypeMapper typeMapper = new DefaultJackson2JavaTypeMapper();
+    Map<String, Class<?>> mappings = new HashMap<>();
+    mappings.put("ru.baysarov.task.service.dto.TimeEntryDtoOut", TimeEntryDto.class);
+    typeMapper.setIdClassMapping(mappings);
+
+    JsonDeserializer<TimeEntryDto> deserializer = new JsonDeserializer<>(TimeEntryDto.class);
     deserializer.setTypeMapper(typeMapper);
     deserializer.setUseTypeMapperForKey(true);
     deserializer.addTrustedPackages("*");

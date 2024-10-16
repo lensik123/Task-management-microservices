@@ -32,5 +32,4 @@ public class TaskDtoIn {
 
   private TaskStatus status;
 
-  private Double timeSpentHours;
 }

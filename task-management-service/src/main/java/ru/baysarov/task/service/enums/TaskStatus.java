@@ -11,6 +11,13 @@ public enum TaskStatus {
   IN_PROCESS,
   DONE;
 
+  /**
+   * Создает экземпляр {@link TaskStatus} из строки.
+   *
+   * @param value строковое представление статуса задачи
+   * @return соответствующий {@link TaskStatus}
+   * @throws InvalidEnumValueException если передано недопустимое значение
+   */
   @JsonCreator
   public static TaskStatus fromString(String value) {
     try {
@@ -22,9 +29,13 @@ public enum TaskStatus {
     }
   }
 
+  /**
+   * Возвращает строковое представление статуса задачи для сериализации в JSON.
+   *
+   * @return строковое представление статуса задачи
+   */
   @JsonValue
   public String toJson() {
     return name();
   }
-
 }

@@ -29,6 +29,12 @@ public class GlobalExceptionHandler {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
   }
 
+
+  @ExceptionHandler(UserAlreadyExistsException.class)
+  public ResponseEntity<String> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
+    logger.error(ex.getMessage(), ex);
+    return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+  }
   /**
    * Обрабатывает исключения типа AccessDeniedException.
    *

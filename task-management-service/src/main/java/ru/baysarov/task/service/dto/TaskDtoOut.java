@@ -11,7 +11,7 @@ import ru.baysarov.task.service.enums.TaskStatus;
 @Setter
 @ToString
 public class TaskDtoOut {
-
+  private final String type = "task";
   private Integer id;
   private String title;
   private String description;
@@ -22,5 +22,4 @@ public class TaskDtoOut {
   private LocalDateTime updatedAt;
   private TaskPriority priority;
   private TaskStatus status;
-  private Double timeSpentHours;
 }

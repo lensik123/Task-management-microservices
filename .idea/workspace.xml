@@ -5,24 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3099c4a4-d7bc-486e-96ed-ae5307475164" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/dto/AuthResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/dto/RegisterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/InvalidTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/UserAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Model/TimeEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Repostiory/TimeEntryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TaskStatusStatisticsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TimeEntryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/exception/TaskNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/exception/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/feign/FeignErrorDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/feign/UserClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryListenerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoOut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/TimeEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TimeEntryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/logs/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/myapp.log" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/myapp.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/dto/AuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/dto/AuthRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/ru/baysarov/task_manager_gateway/filter/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/ru/baysarov/task_manager_gateway/filter/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/logs/application.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/enums/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/enums/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/UserNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/model/UserCredential.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/model/UserCredential.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TaskDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TaskDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Repostiory/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Repostiory/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/TaskStatisticsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/TaskStatisticsServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/controller/StatisticController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TasksStatisticResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskListenerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/controller/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskPriority.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskPriority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/feign/FeignErrorDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/feign/FeignErrorDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/KafkaMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/KafkaMessagePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zk-single-kafka-multiple1.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zk-single-kafka-multiple1.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,10 +73,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -44,21 +85,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.zk-single-kafka-multiple1.yml: Compose Deployment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.zk-single-kafka-multiple1.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -81,6 +122,9 @@
       <workItem from="1728812532090" duration="5376000" />
       <workItem from="1728849161752" duration="1606000" />
       <workItem from="1728905168934" duration="1442000" />
+      <workItem from="1728986929304" duration="4662000" />
+      <workItem from="1729019124423" duration="2495000" />
+      <workItem from="1729093426667" duration="6182000" />
     </task>
     <servers />
   </component>

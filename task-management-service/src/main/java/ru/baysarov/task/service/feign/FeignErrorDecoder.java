@@ -25,12 +25,11 @@ public class FeignErrorDecoder implements ErrorDecoder {
   public Exception decode(String methodKey, Response response) {
     HttpStatus status = HttpStatus.valueOf(response.status());
 
-    // Получаем URL запроса, чтобы вытащить email или ID пользователя
     String url = response.request().url();
-    String userIdentifier = extractUserIdentifierFromUrl(url); // Вытащим либо email, либо ID
+    String userIdentifier = extractUserIdentifierFromUrl(url);
 
     if (status == HttpStatus.NOT_FOUND) {
-      return new UserNotFoundException("User with identifier " + userIdentifier + " not found in auth service");
+      return new UserNotFoundException("User with identifier " + userIdentifier + " not found in system");
     } else if (status == HttpStatus.FORBIDDEN) {
       return new AccessException("Access denied for user with identifier " + userIdentifier);
     }

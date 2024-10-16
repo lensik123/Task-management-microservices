@@ -86,8 +86,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
               return chain.filter(mutatedExchange);
             })
             .onErrorResume(throwable -> {
-              log.error("Token validation failed: {}", throwable.getMessage());
-              return handleUnauthorizedResponse(exchange, "Token validation failed");
+              log.error("Error", throwable.getMessage());
+              return handleUnauthorizedResponse(exchange, "503 SERVICE_UNAVAILABLE");
             });
       }
 

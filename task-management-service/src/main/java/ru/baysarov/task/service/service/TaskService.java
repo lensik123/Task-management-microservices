@@ -34,7 +34,7 @@ public interface TaskService {
    *
    * @return список объектов TaskDto, представляющих все задачи
    */
-  List<TaskDtoOut> getAllTasks(int page, int size, boolean isMyTasks);
+  List<TaskDtoOut> getAllTasks(int page, int size);
 
   /**
    * Обновляет данные задачи.

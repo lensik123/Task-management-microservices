@@ -1,5 +1,6 @@
 package ru.baysarov.task.service.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -7,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -14,6 +16,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import ru.baysarov.task.service.enums.TaskPriority;
@@ -62,8 +65,8 @@ public class Task {
   @Column(name = "priority")
   private TaskPriority priority;
 
-  @Column(name = "time_spent_hours")
-  private Double timeSpentHours;
+  @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<TimeEntry> timeEntries;
 
   @PrePersist
   protected void onCreate() {

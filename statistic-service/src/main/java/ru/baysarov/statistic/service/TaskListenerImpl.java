@@ -4,34 +4,52 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import ru.baysarov.statistic.dto.TaskDto;
 
+/**
+ * Реализация слушателя для обработки событий, связанных с задачами, получаемых из Kafka.
+ */
 @Service
 public class TaskListenerImpl implements TaskListener {
 
   private final TaskService taskService;
 
+
   public TaskListenerImpl(TaskService taskService) {
     this.taskService = taskService;
   }
-  @KafkaListener(topics = "${spring.kafka.topic.task-created}", groupId = "task_group")
+
+  /**
+   * Обрабатывает событие создания задачи.
+   *
+   * @param taskDto объект задачи, который был создан
+   */
+  @KafkaListener(topics = "task_created", groupId = "task_group", containerFactory = "taskDtoListenerFactory")
   @Override
-  public void onTaskCreated(TaskDto TaskDto) {
-    System.out.println("Received task created: " + TaskDto);
-    taskService.saveTask(TaskDto);
+  public void onTaskCreated(TaskDto taskDto) {
+    System.out.println("Received task created: " + taskDto);
+    taskService.saveTask(taskDto);
   }
 
-  @KafkaListener(topics = "${spring.kafka.topic.task-updated}", groupId = "task_group")
+  /**
+   * Обрабатывает событие обновления задачи.
+   *
+   * @param taskDto объект задачи, который был обновлен
+   */
+  @KafkaListener(topics = "task_updated", groupId = "task_group", containerFactory = "taskDtoListenerFactory")
   @Override
-  public void onTaskUpdated(TaskDto TaskDto) {
-    System.out.println("Received task updated: " + TaskDto);
-    taskService.saveTask(TaskDto);
+  public void onTaskUpdated(TaskDto taskDto) {
+    System.out.println("Received task updated: " + taskDto);
+    taskService.updateTask(taskDto);
   }
 
-  @KafkaListener(topics = "${spring.kafka.topic.task-deleted}", groupId = "task_group")
+  /**
+   * Обрабатывает событие удаления задачи.
+   *
+   * @param taskDto объект задачи, который был удален
+   */
+  @KafkaListener(topics = "task_deleted", groupId = "task_group", containerFactory = "taskDtoListenerFactory")
   @Override
-  public void onTaskDeleted(TaskDto TaskDto) {
-    System.out.println("Received task deleted: " + TaskDto);
-    taskService.deleteTask(TaskDto);
+  public void onTaskDeleted(TaskDto taskDto) {
+    System.out.println("Received task deleted: " + taskDto);
+    taskService.deleteTask(taskDto);
   }
 }
-
-

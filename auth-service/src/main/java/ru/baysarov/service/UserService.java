@@ -2,6 +2,7 @@ package ru.baysarov.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.baysarov.dto.RegisterRequest;
 import ru.baysarov.dto.UserDto;
 import ru.baysarov.enums.Role;
+import ru.baysarov.exception.UserAlreadyExistsException;
 import ru.baysarov.exception.UserNotFoundException;
 import ru.baysarov.model.UserCredential;
 import ru.baysarov.repository.UserRepository;
@@ -63,6 +65,12 @@ public class UserService implements UserDetailsService {
    */
   @Transactional
   public void saveUser(RegisterRequest registerRequest) {
+
+    Optional<UserCredential> existingUser = repository.findByEmail(registerRequest.getEmail());
+    if (existingUser.isPresent()) {
+      log.error("Email already in use: {}", registerRequest.getEmail());
+      throw new UserAlreadyExistsException("Email: " +registerRequest.getEmail() + " is already in use"); // Создайте этот класс исключения
+    }
     log.info("Saving user: {}", registerRequest.getEmail());
     UserCredential userCredential = new UserCredential();
     userCredential.setEmail(registerRequest.getEmail());

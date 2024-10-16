@@ -31,6 +31,7 @@ services:
     depends_on:
       - zoo1
 
+
   kafka2:
     image: confluentinc/cp-kafka:7.3.2
     hostname: kafka2
@@ -68,3 +69,13 @@ services:
       - D:/kafka/data/kafka3:/confluentinc/kafka
     depends_on:
       - zoo1
+    command: >
+      bash -c "
+        /etc/confluent/docker/run & 
+        sleep 30;  
+        echo 'All brokers are up! Creating topics...'; 
+        kafka-topics --create --topic task_created --partitions 3 --replication-factor 3 --if-not-exists --bootstrap-server kafka1:19097; 
+        kafka-topics --create --topic task_updated --partitions 3 --replication-factor 3 --if-not-exists --bootstrap-server kafka1:19097; 
+        kafka-topics --create --topic task_deleted --partitions 3 --replication-factor 3 --if-not-exists --bootstrap-server kafka1:19097;
+        kafka-topics --create --topic time_entry --partitions 3 --replication-factor 3 --if-not-exists --bootstrap-server kafka1:19097; 
+        sleep infinity"

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: TASK-STATISTIC
+    name: STATISTIC
   datasource:
     url: jdbc:postgresql://localhost:5432/statistic_service
     username: postgres
@@ -19,11 +19,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     profiles:
       active: default
-  kafka:
-    topic:
-      task-created: task_created
-      task-updated: task_updated
-      task-deleted: task_deleted
 
 eureka:
   client:

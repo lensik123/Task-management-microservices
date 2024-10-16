@@ -6,12 +6,8 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronization;
-import org.springframework.transaction.support.TransactionSynchronizationAdapter;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.web.server.ResponseStatusException;
 import ru.baysarov.task.service.dto.TaskDtoIn;
 import ru.baysarov.task.service.dto.TaskDtoOut;
@@ -30,29 +26,23 @@ import ru.baysarov.task.service.repository.TaskRepository;
 @Transactional(readOnly = true)
 public class TaskServiceImpl implements TaskService {
 
-  //TODO: userService сделать вместо userClient
-
   private final UserService userService;
   private final TaskRepository taskRepository;
   private final ModelMapper modelMapper;
-  private final KafkaTemplate<String, Object> kafkaTemplate;
+
   private final KafkaMessagePublisher kafkaMessagePublisher;
-
   private final String taskCreatedTopic = "task_created";
-
   private final String taskDeletedTopic = "task_deleted";
-
   private final String taskUpdatedTopic = "task_updated";
 
 
   public TaskServiceImpl(UserServiceImpl userServiceImpl,
       TaskRepository taskRepository,
-      ModelMapper modelMapper, KafkaTemplate<String, Object> kafkaTemplate,
+      ModelMapper modelMapper,
       KafkaMessagePublisher kafkaMessagePublisher) {
     this.userService = userServiceImpl;
     this.taskRepository = taskRepository;
     this.modelMapper = modelMapper;
-    this.kafkaTemplate = kafkaTemplate;
     this.kafkaMessagePublisher = kafkaMessagePublisher;
   }
 
@@ -84,11 +74,10 @@ public class TaskServiceImpl implements TaskService {
     taskRepository.save(task);
 
     TaskDtoOut taskDtoOut = convertToDtoOut(task);
-    kafkaMessagePublisher.sendTaskToTopic(taskCreatedTopic, taskDtoOut);
+    kafkaMessagePublisher.sendToTopic(taskCreatedTopic, taskDtoOut);
 
   }
 
-  //TODO: добавить сюда вывод исполнителя и автора
 
   /**
    * Получает задачу по её идентификатору.
@@ -105,23 +94,18 @@ public class TaskServiceImpl implements TaskService {
     return convertToDtoOut(task);
   }
 
-  //TODO: Проверить корректность всех выходящих и входящих TASKDTO
-  //TODO: продумать сортировку тасков и получение только своих тасков
-
   /**
    * Получает список всех задач.
    *
    * @return список объектов TaskDto, представляющих все задачи
    */
   @Override
-  public List<TaskDtoOut> getAllTasks(int page, int size, boolean isMyTasks) {
+  public List<TaskDtoOut> getAllTasks(int page, int size) {
     Pageable pageable = PageRequest.of(page, size);
     List<Task> tasks = taskRepository.findAll(pageable).stream().toList();
     return tasks.stream()
         .map(this::convertToDtoOut).collect(Collectors.toList());
   }
-
-  //TODO: доработать taskDTO
 
   /**
    * Обновляет данные задачи.
@@ -149,8 +133,8 @@ public class TaskServiceImpl implements TaskService {
 
     taskRepository.save(existingTask);
 
-    TaskDtoOut taskDtoToSend = modelMapper.map(existingTask, TaskDtoOut.class);
-    kafkaTemplate.send(taskUpdatedTopic,  taskDtoToSend);
+    TaskDtoOut taskDtoToSend = convertToDtoOut(existingTask);
+    kafkaMessagePublisher.sendToTopic(taskUpdatedTopic, taskDtoToSend);
   }
 
 
@@ -173,14 +157,8 @@ public class TaskServiceImpl implements TaskService {
     task.setAssigneeId(user.getId());
     taskRepository.save(task);
 
-    TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
-      @Override
-      public void afterCommit() {
-        TaskDtoOut taskDtoToSend = modelMapper.map(task, TaskDtoOut.class);
-        kafkaTemplate.send(taskDeletedTopic, "Task deleted", taskDtoToSend);
-      }
-    });
-
+    TaskDtoOut taskDtoToSend = modelMapper.map(task, TaskDtoOut.class);
+    kafkaMessagePublisher.sendToTopic(taskDeletedTopic, taskDtoToSend);
   }
 
   /**
@@ -189,7 +167,6 @@ public class TaskServiceImpl implements TaskService {
    * @param id идентификатор задачи, которую нужно удалить
    * @throws TaskNotFoundException если задача с указанным идентификатором не найдена
    */
-  //TODO: Проверить как exception выбрасывается
   @Override
   @Transactional
   public void deleteTask(int id) {
@@ -197,12 +174,11 @@ public class TaskServiceImpl implements TaskService {
         .orElseThrow(() -> new TaskNotFoundException(id));
     taskRepository.delete(task);
 
-    TaskDtoOut taskDtoToSend = modelMapper.map(task, TaskDtoOut.class);
-    kafkaTemplate.send(taskDeletedTopic, "Task deleted", taskDtoToSend);
+    TaskDtoOut taskDtoToSend = convertToDtoOut(task);
+    kafkaMessagePublisher.sendToTopic(taskDeletedTopic, taskDtoToSend);
   }
 
   //TODO: доработать роль
-
   /**
    * Устанавливает срок выполнения задачи.
    *
@@ -231,13 +207,17 @@ public class TaskServiceImpl implements TaskService {
 
     task.setDeadline(deadLine);
     taskRepository.save(task);
+
+    TaskDtoOut taskDtoToSend = convertToDtoOut(task);
+    kafkaMessagePublisher.sendToTopic(taskUpdatedTopic,taskDtoToSend);
   }
 
   /**
-   * Маппер из Task в TaskDto. Id автора и Id исполнителя преобразуются в их email-ы.
-   *
-   * @param task
-   * @return объект TaskDtoOut
+   * Преобразует сущность Task в DTO TaskDtoOut, где ID автора и исполнителя
+   * (при наличии) конвертируются в их email-ы с использованием userService.
+   * @param task объект Task, который необходимо преобразовать
+   * @return объект TaskDtoOut, содержащий информацию о задаче и email-ы автора и исполнителя
+   * @throws UserNotFoundException если пользователь с указанным ID не найден
    */
   public TaskDtoOut convertToDtoOut(Task task) {
     TaskDtoOut taskDto = modelMapper.map(task, TaskDtoOut.class);
