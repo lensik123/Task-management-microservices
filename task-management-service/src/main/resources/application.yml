@@ -5,9 +5,9 @@ spring:
   application:
     name: TASK-MANAGEMENT
   datasource:
-    url: jdbc:postgresql://localhost:5432/task_service
-    username: postgres
-    password: 1234
+    url: jdbc:postgresql://localhost:5432/your_db
+    username: your_username
+    password: your_password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -20,8 +20,8 @@ spring:
   flyway:
     baseline-on-migrate: true
     enabled: true
-    user: postgres
-    password: 1234
+    user: your_username
+    password: your_password
     baseline-description: "init"
     baseline-version: 0
 
