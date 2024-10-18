@@ -39,3 +39,16 @@ Swagger предоставляет возможность просматрива
 - `statistic`
 
 Таким образом, вы можете легко переключаться между сервисами и их API в одном месте. 
+
+
+
+## Инструкция по запуску.
+### Конфигурация
+Перед запуском проекта убедитесь, что в `application.yml` указаны правильные параметры для подключения к базе данных:
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_db
+    username: your_db_username
+    password: your_db_password
