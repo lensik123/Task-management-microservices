@@ -44,7 +44,7 @@
 - **Spring Security**
 - **Eureka**
 - **PostgreSQL**
-
+- **Docker**
 
 ## Swagger документация
 В проекте реализована централизованная Swagger документация для всех сервисов, которая доступна по следующему адресу: http://localhost:9092/swagger-ui/index.html
