@@ -53,5 +53,5 @@ spring:
     username: your_db_username
     password: your_db_password
   flyway:
-    user: postgres
-    password: 1234
+    user: your_db_username
+    password: your_db_password
