@@ -22,13 +22,14 @@
 
 
 ### Стек технологий
-- **Spring Boot** — основной фреймворк для разработки приложения.
-- **JPA/Hibernate** — для ORM и работы с базой данных.
-- **Flyway** — для управления миграциями базы данных.
-- **Kafka Spring Cloud** — для обработки сообщений через Apache Kafka.
-- **Spring Security** — для аутентификации и авторизации.
-- **Eureka** — для регистрации микросервисов и их взаимодействия.
-- **PostgreSQL** — в качестве СУБД.
+- **Spring Boot**
+- **JPA/Hibernate** 
+- **Flyway**
+- **Kafka**
+- **Spring Cloud** — 
+- **Spring Security**
+- **Eureka**
+- **PostgreSQL**
 
 
 ## Swagger документация
