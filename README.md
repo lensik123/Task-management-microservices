@@ -52,3 +52,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/task_db
     username: your_db_username
     password: your_db_password
+  flyway:
+    user: postgres
+    password: 1234
