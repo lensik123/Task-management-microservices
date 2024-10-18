@@ -1,10 +1,10 @@
 package ru.baysarov.task.service.service;
 
-//TODO: пройтись по всем файлам и сделать форматирование
 import java.time.LocalDateTime;
 import java.util.List;
 import ru.baysarov.task.service.dto.TaskDtoIn;
 import ru.baysarov.task.service.dto.TaskDtoOut;
+import ru.baysarov.task.service.dto.TaskResponseDto;
 
 /**
  * Интерфейс для управления задачами в системе.
@@ -14,7 +14,7 @@ public interface TaskService {
   /**
    * Создает новую задачу.
    *
-   * @param taskDtoIn     объект, содержащий данные о задаче
+   * @param taskDtoIn   объект, содержащий данные о задаче
    * @param authorEmail адрес электронной почты автора задачи
    */
   void createTask(TaskDtoIn taskDtoIn, String authorEmail);
@@ -23,10 +23,9 @@ public interface TaskService {
    * Получает задачу по её идентификатору.
    *
    * @param id идентификатор задачи
-   * @return объект TaskDto с данными о задаче
+   * @return объект TaskResponseDto с данными о задаче
    */
-  TaskDtoOut getTaskById(int id);
-
+  TaskResponseDto getTaskById(int id);
 
 
   /**
@@ -50,7 +49,7 @@ public interface TaskService {
    * @param taskId    идентификатор задачи
    * @param userEmail адрес электронной почты пользователя, которому назначается задача
    */
-  void assignTask(int taskId, String userEmail);
+  void assignTask(int taskId, int assigneeId);
 
   /**
    * Удаляет задачу по её идентификатору.

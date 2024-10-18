@@ -25,7 +25,8 @@ public class AuthConfig {
                 "/auth/register",
                 "/auth/validateToken",
                 "/auth/token",
-                "/user/**"
+                "/user/**",
+                "/v3/api-docs"
             ).permitAll()
             .anyRequest().authenticated()
         );

@@ -41,11 +41,11 @@ public class KafkaMessagePublisher {
       future.whenComplete((result, ex) -> {
         if (ex == null) {
           System.out.println(
-              "Sent message=[" + message.toString() + "] with offset=[" + result.getRecordMetadata()
+              "Sent message=[" + message + "] with offset=[" + result.getRecordMetadata()
                   .offset() + "]");
         } else {
           System.out.println(
-              "Unable to send message=[" + message.toString() + "] due to : " + ex.getMessage());
+              "Unable to send message=[" + message + "] due to : " + ex.getMessage());
         }
       });
     } catch (Exception e) {

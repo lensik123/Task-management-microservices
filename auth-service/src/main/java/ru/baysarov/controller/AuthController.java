@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ru.baysarov.dto.AuthRequest;
 import ru.baysarov.dto.AuthResponse;
 import ru.baysarov.dto.RegisterRequest;
@@ -45,8 +48,14 @@ public class AuthController {
    * @param bindingResult Результаты валидации, которые могут содержать ошибки.
    * @return Ответ с кодом статуса 201 (Created) при успешной регистрации или ошибки валидации.
    */
+  @Operation(summary = "Регистрация нового пользователя",
+      responses = {
+          @ApiResponse(responseCode = "201", description = "Пользователь успешно зарегистрирован"),
+          @ApiResponse(responseCode = "400", description = "Ошибки валидации")
+      })
   @PostMapping("/register")
-  public ResponseEntity<?> registerUser(@RequestBody @Valid RegisterRequest registerRequest, BindingResult bindingResult) {
+  public ResponseEntity<?> registerUser(@RequestBody @Valid RegisterRequest registerRequest,
+      BindingResult bindingResult) {
     ResponseEntity<?> errors = getResponseEntity(bindingResult);
     log.info("Trying to add new user");
     if (errors != null) {
@@ -55,7 +64,7 @@ public class AuthController {
     }
     userService.saveUser(registerRequest);
     log.info("User has been added");
-    return ResponseEntity.ok(HttpStatus.CREATED);
+    return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
   /**
@@ -65,8 +74,14 @@ public class AuthController {
    * @param bindingResult Результаты валидации, которые могут содержать ошибки.
    * @return Ответ с токеном при успешной аутентификации или ошибки валидации.
    */
+  @Operation(summary = "Получение токена аутентификации",
+      responses = {
+          @ApiResponse(responseCode = "200", description = "Токен успешно получен"),
+          @ApiResponse(responseCode = "400", description = "Ошибки валидации")
+      })
   @PostMapping("/token")
-  public ResponseEntity<?> getToken(@RequestBody @Valid AuthRequest authRequest, BindingResult bindingResult) {
+  public ResponseEntity<?> getToken(@RequestBody @Valid AuthRequest authRequest,
+      BindingResult bindingResult) {
     ResponseEntity<?> errors = getResponseEntity(bindingResult);
     log.info("Trying to authenticate user");
     if (errors != null) {
@@ -83,8 +98,13 @@ public class AuthController {
    * @param token Токен для валидации.
    * @return Ответ с результатом валидации.
    */
+  @Operation(summary = "Валидация токена",
+      responses = {
+          @ApiResponse(responseCode = "200", description = "Токен успешно валиден"),
+          @ApiResponse(responseCode = "400", description = "Токен не валиден")
+      })
   @GetMapping("/validateToken")
-  public ResponseEntity<?> validateToken(@RequestParam String token) {
+  public ResponseEntity<?> validateToken(@RequestParam @Parameter(description = "Токен для валидации") String token) {
     log.info("Trying to validate token {}", token);
     return ResponseEntity.ok(authService.validateToken(token));
   }

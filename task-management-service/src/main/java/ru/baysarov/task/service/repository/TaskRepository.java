@@ -9,6 +9,7 @@ import ru.baysarov.task.service.model.Task;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer> {
+
   Page<Task> findAll(Pageable pageable);
 
 }

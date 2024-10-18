@@ -12,12 +12,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.baysarov.task.service.enums.TaskPriority;
 import ru.baysarov.task.service.enums.TaskStatus;
@@ -29,6 +29,9 @@ import ru.baysarov.task.service.enums.TaskStatus;
 @Getter
 @Setter
 @Table(name = "task")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Task {
 
 
@@ -36,7 +39,6 @@ public class Task {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
-  //TODO: varchar 255 to varchar 100
   @Column(name = "title")
   private String title;
 

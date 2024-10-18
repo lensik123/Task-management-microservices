@@ -9,5 +9,6 @@ public interface TaskService {
   void saveTask(TaskDto taskDto);
 
   void deleteTask(TaskDto taskDto);
+
   void updateTask(TaskDto taskDto);
 }

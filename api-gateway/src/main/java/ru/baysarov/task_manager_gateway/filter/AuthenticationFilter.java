@@ -15,13 +15,14 @@ import ru.baysarov.task_manager_gateway.dto.UserDto;
 
 /**
  * Фильтр аутентификации для проверки токена в заголовке Authorization.
- *
- * Этот фильтр проверяет, присутствует ли токен авторизации в запросе,
- * валидирует его через Auth-сервис и добавляет информацию о пользователе в запрос.
+ * <p>
+ * Этот фильтр проверяет, присутствует ли токен авторизации в запросе, валидирует его через
+ * Auth-сервис и добавляет информацию о пользователе в запрос.
  */
 @Component
 @Slf4j
-public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
+public class AuthenticationFilter extends
+    AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
 
   private final WebClient.Builder webClientBuilder;
@@ -31,7 +32,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
    * Конструктор для AuthenticationFilter.
    *
    * @param webClientBuilder сборщик WebClient для выполнения запросов к Auth-сервису
-   * @param routeValidator валидатор маршрутов для определения защищенных маршрутов
+   * @param routeValidator   валидатор маршрутов для определения защищенных маршрутов
    */
   public AuthenticationFilter(WebClient.Builder webClientBuilder, RouteValidator routeValidator) {
     super(Config.class);
@@ -56,7 +57,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
           return handleUnauthorizedResponse(exchange, "Missing authorization information");
         }
 
-        String authHeader = serverWebExchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+        String authHeader = serverWebExchange.getRequest().getHeaders()
+            .get(HttpHeaders.AUTHORIZATION).get(0);
         String[] parts = authHeader.split(" ");
 
         if (parts.length != 2 || !"Bearer".equals(parts[0])) {
@@ -64,9 +66,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
           return handleUnauthorizedResponse(exchange, "Incorrect authorization structure");
         }
 
-        String token = parts[1]; // Сохраняем токен для передачи дальше
+        String token = parts[1];
 
-        // Валидация токена через Auth-сервис
         log.info("Validating token: {}", token);
         return webClientBuilder.build()
             .get()
@@ -75,7 +76,6 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             .bodyToMono(UserDto.class)
             .flatMap(userDto -> {
               log.info("Token validated successfully for user: {}", userDto.getEmail());
-              // Мутируем запрос, добавляя информацию о пользователе
               ServerWebExchange mutatedExchange = exchange.mutate()
                   .request(serverWebExchange.getRequest().mutate()
                       .header("X-auth-user-email", userDto.getEmail())
@@ -87,7 +87,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             })
             .onErrorResume(throwable -> {
               log.error("Error", throwable.getMessage());
-              return handleUnauthorizedResponse(exchange, "503 SERVICE_UNAVAILABLE");
+              return handleUnauthorizedResponse(exchange, "Authenticate error (invalid token or service unavailable)");
             });
       }
 
@@ -98,7 +98,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
   /**
    * Обрабатывает ответ с кодом 401 Unauthorized.
    *
-   * @param exchange объект обмена для текущего запроса
+   * @param exchange     объект обмена для текущего запроса
    * @param errorMessage сообщение об ошибке
    * @return Mono<Void> для завершения обработки ответа
    */
@@ -111,10 +111,10 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
   }
 
   /**
-   * Конфигурация для AuthenticationFilter.
-   * Пустой класс, можно добавить параметры фильтра, если нужно.
+   * Конфигурация для AuthenticationFilter. Пустой класс, можно добавить параметры фильтра, если
+   * нужно.
    */
   public static class Config {
-    // Пустой класс Config, можно добавить параметры фильтра если нужно
+
   }
 }

@@ -17,3 +17,18 @@ logging:
     rollingpolicy:
       max-file-size: 10MB
       max-history: 30
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    configUrl: ${server.servlet.contextPath}/v3/api-docs/swagger-config
+    url: ${server.servlet.contextPath}/v3/api-docs
+    urls:
+      - name: AUTH
+        url: http://host.docker.internal:9090/v3/api-docs  # URL для AUTH сервиса
+      - name: API-GATEWAY
+        url: http://host.docker.internal:9091/v3/api-docs  # URL для API-G
+      - name: TASK-MANAGEMENT
+        url: http://host.docker.internal:9092/v3/api-docs  # URL для TASK-MANAGEMENT сервиса
+      - name: STATISTIC
+        url: http://host.docker.internal:9095/v3/api-docs  # URL для STATISTIC сервиса

@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Bean;
 @EnableFeignClients
 public class TaskServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TaskServiceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(TaskServiceApplication.class, args);
+  }
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+  @Bean
+  public ModelMapper modelMapper() {
+    return new ModelMapper();
+  }
 
 }

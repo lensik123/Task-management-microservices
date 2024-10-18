@@ -33,7 +33,6 @@ public class GlobalExceptionHandler {
   }
 
 
-
   /**
    * Обрабатывает исключения типа AccessDeniedException.
    *
@@ -45,7 +44,6 @@ public class GlobalExceptionHandler {
     logger.error("Access denied", ex);
     return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access Denied: " + ex.getMessage());
   }
-
 
 
   /**

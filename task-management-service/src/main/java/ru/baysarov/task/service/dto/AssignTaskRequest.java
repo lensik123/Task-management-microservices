@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AssignTaskRequest {
-  private String assigneeEmail;
+
+  private Integer assigneeId;
 }
 

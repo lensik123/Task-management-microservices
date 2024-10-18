@@ -11,14 +11,21 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    profiles:
-      active: default
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    user: postgres
+    password: 1234
+    baseline-description: "init"
+    baseline-version: 0
+
+
 
 eureka:
   client:
@@ -35,5 +42,6 @@ logging:
       max-file-size: 5MB
       max-history: 30
 
-
-
+springdoc:
+  swagger-ui:
+    configUrl: "/swagger-config.json"

@@ -8,8 +8,13 @@ import ru.baysarov.statistic.Model.TimeEntry;
 
 @Repository
 public interface TimeEntryRepository extends JpaRepository<TimeEntry, Integer> {
-  List<TimeEntry> findByUserIdAndDateBetween(Integer userId, LocalDate startDate, LocalDate endDate);
-  List<TimeEntry> findByTaskIdAndDateBetween(Integer taskId, LocalDate startDate, LocalDate endDate);
+
+  List<TimeEntry> findByUserIdAndDateBetween(Integer userId, LocalDate startDate,
+      LocalDate endDate);
+
+  List<TimeEntry> findByTaskIdAndDateBetween(Integer taskId, LocalDate startDate,
+      LocalDate endDate);
+
   List<TimeEntry> findByDateBetween(LocalDate startDate, LocalDate endDate);
 }
 

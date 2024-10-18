@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import ru.baysarov.statistic.dto.TaskStatusStatisticsDto;
 
 public interface StatisticService {
-  ByteArrayInputStream timeSpentReport(String userEmail, LocalDate startDate, LocalDate endDate, boolean isManager);
+
+  ByteArrayInputStream timeSpentReport(String userEmail, LocalDate startDate, LocalDate endDate,
+      boolean isManager);
+
   TaskStatusStatisticsDto allTasksStatuses();
 }

@@ -4,16 +4,17 @@ package ru.baysarov.task.service.exception;
  * Исключение, выбрасываемое, когда предоставлено недопустимое значение для типа перечисления.
  */
 public class InvalidEnumValueException extends RuntimeException {
+
   private final String invalidValue;
   private final Class<?> enumClass;
 
   /**
-   * Конструирует новое исключение InvalidEnumValueException с указанным сообщением,
-   * недопустимым значением и классом перечисления.
+   * Конструирует новое исключение InvalidEnumValueException с указанным сообщением, недопустимым
+   * значением и классом перечисления.
    *
-   * @param message сообщение, описывающее причину исключения
+   * @param message      сообщение, описывающее причину исключения
    * @param invalidValue недопустимое значение, вызвавшее исключение
-   * @param enumClass класс перечисления, к которому принадлежит недопустимое значение
+   * @param enumClass    класс перечисления, к которому принадлежит недопустимое значение
    */
   public InvalidEnumValueException(String message, String invalidValue, Class<?> enumClass) {
     super(message);

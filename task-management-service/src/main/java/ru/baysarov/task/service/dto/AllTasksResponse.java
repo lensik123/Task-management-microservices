@@ -8,9 +8,11 @@ import lombok.Setter;
 @Setter
 public class AllTasksResponse {
 
-  private final List<TaskDtoOut> allTasks;
+  private List<TaskDtoOut> allTasks;
 
   public AllTasksResponse(List<TaskDtoOut> allTasks) {
     this.allTasks = allTasks;
   }
+
+
 }

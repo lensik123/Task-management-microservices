@@ -19,6 +19,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class TimeEntry {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;

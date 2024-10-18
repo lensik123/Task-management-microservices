@@ -24,7 +24,9 @@ public enum TaskPriority {
       return TaskPriority.valueOf(value.toUpperCase());
     } catch (IllegalArgumentException e) {
       String values = EnumUtil.getEnumValues(TaskPriority.class);
-      throw new InvalidEnumValueException("\nInvalid task priority: " + value + ". \nMust be one of: " + values, value, TaskPriority.class);
+      throw new InvalidEnumValueException(
+          "\nInvalid task priority: " + value + ". \nMust be one of: " + values, value,
+          TaskPriority.class);
     }
   }
 

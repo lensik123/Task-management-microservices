@@ -32,6 +32,7 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+
     <!-- Dependency for HttpServletRequest -->
     <dependency>
       <groupId>jakarta.servlet</groupId>
@@ -39,16 +40,28 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Database -->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
+      <version>2.1.214</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>2.15.2</version> <!-- Используйте последнюю версию -->
     </dependency>
 
     <!-- JWT -->
@@ -66,6 +79,12 @@
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-jackson</artifactId>
       <version>0.11.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>9.17.0</version> <!-- Убедитесь, что версия актуальна -->
     </dependency>
 
     <!-- Other Libraries -->
@@ -107,7 +126,6 @@
       <version>8.0.1.Final</version>
     </dependency>
 
-
     <!-- Testing -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -120,12 +138,6 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-javadoc-plugin</artifactId>
-      <version>3.10.1</version>
-    </dependency>
-
 
     <!-- OpenAPI -->
     <dependency>
@@ -166,7 +178,28 @@
           <outputDirectory>${project.build.directory}/apidocs</outputDirectory>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version> <!-- или любая другая стабильная версия -->
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
+
 
 </project>

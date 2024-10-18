@@ -23,7 +23,6 @@ spring:
           filters:
             - AuthenticationFilter
 
-
 eureka:
   client:
     service-url:

@@ -10,8 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 public class TaskStatisticsServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TaskStatisticsServiceApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(TaskStatisticsServiceApplication.class, args);
+  }
 
 }

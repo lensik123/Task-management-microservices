@@ -8,14 +8,14 @@ import org.springframework.web.server.ResponseStatusException;
 import ru.baysarov.statistic.exception.UserNotFoundException;
 
 /**
- * Декодер ошибок для Feign, который обрабатывает различные коды состояния HTTP
- * и генерирует соответствующие исключения.
+ * Декодер ошибок для Feign, который обрабатывает различные коды состояния HTTP и генерирует
+ * соответствующие исключения.
  */
 public class FeignErrorDecoder implements ErrorDecoder {
 
   /**
-   * Декодирует ответ от сервиса и возвращает соответствующее исключение на основе
-   * кода состояния HTTP.
+   * Декодирует ответ от сервиса и возвращает соответствующее исключение на основе кода состояния
+   * HTTP.
    *
    * @param methodKey ключ метода Feign, который был вызван
    * @param response  ответ от сервиса
@@ -29,12 +29,14 @@ public class FeignErrorDecoder implements ErrorDecoder {
     String userIdentifier = extractUserIdentifierFromUrl(url);
 
     if (status == HttpStatus.NOT_FOUND) {
-      return new UserNotFoundException("User with identifier " + userIdentifier + " not found in system");
+      return new UserNotFoundException(
+          "User with identifier " + userIdentifier + " not found in system");
     } else if (status == HttpStatus.FORBIDDEN) {
       return new AccessException("Access denied for user with identifier " + userIdentifier);
     }
 
-    return new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error in auth service");
+    return new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+        "Internal server error in auth service");
   }
 
   /**

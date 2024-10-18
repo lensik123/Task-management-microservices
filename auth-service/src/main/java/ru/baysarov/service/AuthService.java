@@ -6,6 +6,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,8 +37,10 @@ public class AuthService {
   @Value("${jwt.secret}")
   private String SECRET_KEY;
 
+  @Setter
   @Value("${jwt.expiration-time}")
   private long expirationTimeInSeconds;
+
 
   /**
    * Конструктор для инициализации {@link AuthService}.

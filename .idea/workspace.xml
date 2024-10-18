@@ -5,65 +5,567 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3099c4a4-d7bc-486e-96ed-ae5307475164" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/UserAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Model/TimeEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Repostiory/TimeEntryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TaskStatusStatisticsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TimeEntryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/exception/TaskNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/exception/UserNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/feign/FeignErrorDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/feign/UserClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryListenerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoIn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/TimeEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TimeEntryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/ru/baysarov/task_manager_gateway/config/OpenApiAggregatorConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/logs/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/ru/baysarov/task_manager_gateway/filter/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/ru/baysarov/task_manager_gateway/filter/AuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-service/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/logs/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/enums/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/enums/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ru/baysarov/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/myapp.log.2024-10-08.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/myapp.log.2024-10-12.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/myapp.log.2024-10-13.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/myapp.log.2024-10-14.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/myapp.log.2024-10-14.1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server/logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-15.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-15.1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.1.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.10.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.100.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.101.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.102.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.103.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.104.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.105.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.106.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.107.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.108.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.109.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.11.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.110.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.111.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.112.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.113.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.114.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.115.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.116.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.117.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.118.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.119.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.12.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.120.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.121.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.122.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.123.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.124.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.125.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.126.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.127.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.128.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.129.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.13.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.130.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.131.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.132.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.133.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.134.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.135.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.136.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.137.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.138.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.139.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.14.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.140.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.141.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.142.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.143.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.144.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.145.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.146.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.147.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.148.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.149.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.15.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.150.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.151.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.152.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.153.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.154.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.155.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.156.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.157.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.158.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.159.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.16.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.160.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.161.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.162.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.163.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.164.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.165.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.166.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.167.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.168.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.169.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.17.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.170.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.171.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.172.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.173.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.174.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.175.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.176.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.177.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.178.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.179.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.18.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.180.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.181.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.182.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.183.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.184.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.185.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.186.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.187.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.188.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.189.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.19.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.190.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.191.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.192.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.193.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.194.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.195.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.196.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.197.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.198.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.199.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.2.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.20.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.200.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.201.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.202.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.203.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.204.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.205.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.206.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.207.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.208.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.209.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.21.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.210.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.211.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.212.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.213.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.214.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.215.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.216.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.217.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.218.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.219.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.22.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.220.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.221.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.222.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.223.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.224.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.225.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.226.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.227.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.228.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.229.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.23.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.230.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.231.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.232.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.233.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.234.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.235.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.236.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.237.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.238.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.239.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.24.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.240.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.241.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.242.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.243.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.244.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.245.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.246.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.247.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.248.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.249.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.25.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.250.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.251.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.252.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.253.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.254.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.255.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.256.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.257.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.258.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.259.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.26.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.260.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.261.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.262.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.263.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.264.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.265.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.266.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.267.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.268.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.269.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.27.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.270.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.271.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.272.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.273.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.274.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.275.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.276.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.277.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.278.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.279.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.28.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.280.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.281.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.282.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.283.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.284.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.286.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.287.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.288.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.289.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.29.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.290.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.291.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.292.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.293.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.294.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.295.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.296.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.297.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.298.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.299.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.3.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.30.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.300.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.301.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.302.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.303.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.304.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.305.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.306.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.307.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.308.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.309.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.31.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.310.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.311.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.312.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.313.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.314.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.315.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.316.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.317.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.318.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.319.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.32.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.320.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.321.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.322.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.323.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.324.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.325.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.326.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.327.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.328.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.329.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.33.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.330.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.331.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.332.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.333.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.334.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.335.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.336.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.337.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.338.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.339.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.34.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.340.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.341.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.343.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.344.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.345.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.346.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.347.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.348.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.349.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.35.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.350.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.351.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.352.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.353.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.354.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.355.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.356.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.357.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.358.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.359.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.36.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.360.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.361.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.362.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.363.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.364.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.365.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.366.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.367.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.368.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.369.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.37.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.370.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.371.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.372.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.373.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.374.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.375.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.376.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.377.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.378.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.379.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.38.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.380.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.381.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.382.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.383.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.384.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.385.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.386.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.387.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.388.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.389.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.39.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.390.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.391.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.392.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.393.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.394.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.395.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.396.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.397.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.398.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.399.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.4.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.40.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.400.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.401.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.402.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.403.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.404.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.405.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.406.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.407.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.408.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.409.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.41.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.410.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.411.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.412.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.413.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.414.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.415.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.416.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.417.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.418.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.419.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.42.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.420.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.421.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.422.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.423.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.424.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.425.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.426.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.427.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.428.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.429.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.43.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.430.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.431.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.432.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.433.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.434.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.435.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.436.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.437.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.438.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.439.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.44.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.440.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.441.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.442.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.443.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.444.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.445.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.446.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.447.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.448.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.449.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.45.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.450.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.451.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.452.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.453.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.454.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.455.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.456.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.457.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.458.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.459.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.46.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.460.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.461.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.462.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.463.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.464.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.465.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.466.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.467.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.468.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.469.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.47.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.470.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.471.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.472.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.473.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.474.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.475.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.476.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.477.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.478.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.479.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.48.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.480.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.481.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.482.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.483.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.484.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.485.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.486.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.487.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.488.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.489.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.49.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.490.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.491.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.492.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.493.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.494.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.495.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.496.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.497.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.498.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.499.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.5.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.50.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.500.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.501.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.502.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.503.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.504.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.505.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.506.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.507.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.508.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.509.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.51.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.52.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.53.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.54.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.55.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.56.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.57.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.58.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.59.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.6.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.60.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.61.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.62.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.63.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.64.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.65.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.66.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.67.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.68.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.69.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.7.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.70.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.71.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.72.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.73.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.74.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.75.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.76.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.77.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.78.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.79.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.8.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.80.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.81.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.82.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.83.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.84.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.85.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.86.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.87.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.88.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.89.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.9.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.90.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.91.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.92.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.93.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.94.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.95.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.96.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.97.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.98.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/logs/application.log.2024-10-16.99.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/statistic-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Repostiory/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/Repostiory/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/TaskStatisticsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/TaskStatisticsServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/controller/StatisticController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/dto/TasksStatisticResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/StatisticServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskListenerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/statistic-service/src/main/java/ru/baysarov/statistic/service/TimeEntryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/config/FeignConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/config/FeignConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/config/KafkaProducerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/controller/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/AllTasksResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/AllTasksResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/AssignTaskRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/AssignTaskRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/SetDeadlineRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/SetDeadlineRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoIn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TaskDtoOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/TimeEntryDtoOut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/dto/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskPriority.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskPriority.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/enums/TaskStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/InvalidEnumValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/InvalidEnumValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/TaskAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/TaskAccessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/TaskNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/TaskNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/exception/UserNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/feign/FeignErrorDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/feign/FeignErrorDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/feign/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/feign/UserClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/TimeEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/model/TimeEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TimeEntryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/repository/TimeEntryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/KafkaMessagePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/KafkaMessagePublisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/TimeEntryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/util/EnumUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/java/ru/baysarov/task/service/util/EnumUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task-management-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/task-management-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-single-kafka-multiple1.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zk-single-kafka-multiple1.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +627,7 @@
       <workItem from="1728986929304" duration="4662000" />
       <workItem from="1729019124423" duration="2495000" />
       <workItem from="1729093426667" duration="6182000" />
+      <workItem from="1729157126720" duration="596000" />
     </task>
     <servers />
   </component>

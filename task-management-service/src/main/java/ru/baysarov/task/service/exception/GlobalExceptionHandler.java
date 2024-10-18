@@ -107,4 +107,16 @@ public class GlobalExceptionHandler {
         .status(HttpStatus.NOT_FOUND)
         .body(errorResponse);
   }
+
+  @ExceptionHandler(TaskAccessException.class)
+  public ResponseEntity<ErrorResponse> handleTaskAccessException(TaskAccessException ex) {
+    logger.error("TaskAccessException occurred: ", ex);
+    ErrorResponse errorResponse = new ErrorResponse(
+        "Task access",
+        ex.getMessage() // Здесь вы можете указать сообщение об ошибке
+    );
+    return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse); // Статус 403 Forbidden
+  }
+
+
 }

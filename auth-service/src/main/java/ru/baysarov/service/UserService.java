@@ -27,15 +27,12 @@ import ru.baysarov.repository.UserRepository;
 @Transactional(readOnly = true)
 public class UserService implements UserDetailsService {
 
-  private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
-  private final UserRepository repository;
+  private final UserRepository userRepository;
 
-  public UserService(UserRepository userRepository,
-      PasswordEncoder passwordEncoder, UserRepository repository) {
-    this.userRepository = userRepository;
+  public UserService(PasswordEncoder passwordEncoder, UserRepository repository) {
     this.passwordEncoder = passwordEncoder;
-    this.repository = repository;
+    this.userRepository = repository;
   }
 
   /**
@@ -48,11 +45,10 @@ public class UserService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     log.info("Loading user by email: {}", email);
-    UserCredential user = userRepository.findByEmail(email)
-        .orElseThrow(() -> {
-          log.error("User {} not found", email);
-          return new UsernameNotFoundException("User " + email + " not found");
-        });
+    UserCredential user = userRepository.findByEmail(email).orElseThrow(() -> {
+      log.error("User {} not found", email);
+      return new UsernameNotFoundException("User " + email + " not found");
+    });
 
     return new org.springframework.security.core.userdetails.User(user.getEmail(),
         user.getPassword(), new ArrayList<>());
@@ -66,10 +62,11 @@ public class UserService implements UserDetailsService {
   @Transactional
   public void saveUser(RegisterRequest registerRequest) {
 
-    Optional<UserCredential> existingUser = repository.findByEmail(registerRequest.getEmail());
+    Optional<UserCredential> existingUser = userRepository.findByEmail(registerRequest.getEmail());
     if (existingUser.isPresent()) {
       log.error("Email already in use: {}", registerRequest.getEmail());
-      throw new UserAlreadyExistsException("Email: " +registerRequest.getEmail() + " is already in use"); // Создайте этот класс исключения
+      throw new UserAlreadyExistsException("Email: " + registerRequest.getEmail()
+          + " is already in use"); // Создайте этот класс исключения
     }
     log.info("Saving user: {}", registerRequest.getEmail());
     UserCredential userCredential = new UserCredential();
@@ -78,7 +75,7 @@ public class UserService implements UserDetailsService {
     userCredential.setLastName(registerRequest.getLastName());
     userCredential.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
     userCredential.setRole(Role.USER);
-    repository.save(userCredential);
+    userRepository.save(userCredential);
     log.info("User saved successfully: {}", registerRequest.getEmail());
   }
 
@@ -91,11 +88,10 @@ public class UserService implements UserDetailsService {
    */
   public UserDto findByEmail(String email) {
     log.info("Finding user by email: {}", email);
-    UserCredential user = repository.findByEmail(email)
-        .orElseThrow(() -> {
-          log.error("User not found for email: {}", email);
-          return new UserNotFoundException("User not found");
-        });
+    UserCredential user = userRepository.findByEmail(email).orElseThrow(() -> {
+      log.error("User not found for email: {}", email);
+      return new UserNotFoundException("User not found");
+    });
 
     return convertToDto(user);
   }
@@ -109,11 +105,10 @@ public class UserService implements UserDetailsService {
    */
   public UserDto findById(int id) {
     log.info("Finding user by id: {}", id);
-    UserCredential user = repository.findById(id)
-        .orElseThrow(() -> {
-          log.error("User not found for id: {}", id);
-          return new UserNotFoundException("User not found");
-        });
+    UserCredential user = userRepository.findById(id).orElseThrow(() -> {
+      log.error("User not found for id: {}", id);
+      return new UserNotFoundException("User not found");
+    });
 
     return convertToDto(user);
   }
@@ -127,7 +122,7 @@ public class UserService implements UserDetailsService {
    */
   public List<String> getUserRoles(String email) {
     log.info("Getting roles for user: {}", email);
-    UserCredential user = repository.findByEmail(email)
+    UserCredential user = userRepository.findByEmail(email)
         .orElseThrow(() -> new UserNotFoundException("User not found: " + email));
 
     List<String> roles = new ArrayList<>();

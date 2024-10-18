@@ -2,7 +2,6 @@ package ru.baysarov.statistic.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,11 +11,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class TaskDto {
+
   private Integer id;
   private String title;
   private String description;
-  private String assigneeEmail;
-  private String authorEmail;
+  private Integer assigneeId;
+  private Integer authorId;
 
   @JsonDeserialize(using = LocalDateTimeDeserializer.class)
   private LocalDateTime deadline;

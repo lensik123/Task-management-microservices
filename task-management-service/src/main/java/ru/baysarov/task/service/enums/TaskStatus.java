@@ -25,7 +25,8 @@ public enum TaskStatus {
     } catch (IllegalArgumentException e) {
       String values = EnumUtil.getEnumValues(TaskStatus.class);
       throw new InvalidEnumValueException(
-          "\nInvalid task status: " + value + ". \nMust be one of: " + values, value, TaskStatus.class);
+          "\nInvalid task status: " + value + ". \nMust be one of: " + values, value,
+          TaskStatus.class);
     }
   }
 
