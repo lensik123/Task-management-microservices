@@ -40,7 +40,7 @@
 - **JPA/Hibernate** 
 - **Flyway**
 - **Kafka**
-- **Spring Cloud** — 
+- **Spring Cloud**
 - **Spring Security**
 - **Eureka**
 - **PostgreSQL**
