@@ -43,7 +43,7 @@ Swagger предоставляет возможность просматрива
 
 
 ## Инструкция по запуску.
-### Конфигурация
+### Конфигурация 
 Перед запуском проекта убедитесь, что в `application.yml` указаны правильные параметры для подключения к базе данных:
 
 ```yaml
@@ -57,4 +57,25 @@ spring:
     password: your_db_password
 ```
 
-Далее необходимо запустить 
+### Запуск кластера Kafka и Zookeeper
+
+Для локального развертывания кластера Apache Kafka и Zookeeper необходимо использовать Docker Compose файл `zk-single-kafka-multiple1.yml`. Этот файл содержит конфигурацию для одного экземпляра Zookeeper и нескольких брокеров Kafka.
+
+### Шаги для запуска кластера
+
+1. Убедитесь, что у вас установлены Docker и Docker Compose.
+   
+   Для проверки выполните следующие команды:
+
+   ```bash
+   docker --version
+   docker-compose --version
+   ```
+2. Перейдите в директорию, где находится файл zk-single-kafka-multiple1.yml. 
+```bash
+cd path/to/taskManagerNew
+```
+3.Запустите кластер с помощью Docker Compose:
+```bash
+docker-compose -f zk-single-kafka-multiple1.yml up -d
+```
