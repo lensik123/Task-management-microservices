@@ -55,3 +55,6 @@ spring:
   flyway:
     user: your_db_username
     password: your_db_password
+```
+
+Далее необходимо запустить 
