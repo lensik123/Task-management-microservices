@@ -75,7 +75,8 @@ spring:
 ```bash
 cd path/to/taskManagerNew
 ```
-3.Запустите кластер с помощью Docker Compose:
+3. Запустите кластер с помощью Docker Compose:
 ```bash
 docker-compose -f zk-single-kafka-multiple1.yml up -d
 ```
+Убедитесь, что используемые порты (2181, 9097, 9098, 9099) не заняты на вашей машине
