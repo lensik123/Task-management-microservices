@@ -70,7 +70,7 @@ spring:
     password: your_db_password
 ```
 
-### Запуск кластера Kafka и Zookeeper
+## Запуск кластера Kafka и Zookeeper
 
 Для локального развертывания кластера Apache Kafka и Zookeeper необходимо использовать Docker Compose файл `zk-single-kafka-multiple1.yml`. Этот файл содержит конфигурацию для одного экземпляра Zookeeper и нескольких брокеров Kafka.
 
